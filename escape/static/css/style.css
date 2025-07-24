@@ -69,3 +69,34 @@ header input {
     border-radius: 8px;
 }
 
+/* Base dropdown styles */
+.dropdown {
+    position: relative;
+}
+
+.dropbtn {
+    cursor: pointer;
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+}
+
+.dropdown-content {
+    display: none;
+    flex-direction: column;
+    /* background-color: #f4f6f9; */
+    padding-left: 15px;
+    margin-top: 5px;
+}
+
+.dropdown-content a {
+    padding: 8px 15px;
+    display: block;
+    color: #333;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #e1e1e1;
+}
+
