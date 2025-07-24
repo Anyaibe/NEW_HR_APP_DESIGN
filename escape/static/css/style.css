@@ -4,3 +4,68 @@ body, html {
     font-family: 'Arial', sans-serif;
     background-color: #f4f6f9;
 }
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+header input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 200px;
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar styles */
+.sidebar {
+    background-color: #fff;
+    width: 220px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.logo h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 40px;
+}
+
+.nav-links li {
+    margin-bottom: 20px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 16px;
+    padding: 10px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.nav-links li a.active {
+    background-color: #e3efff;
+    border-radius: 8px;
+    color: #007bff;
+}
+
+.nav-links li a:hover {
+    background-color: #ececec;
+    border-radius: 8px;
+}
+
