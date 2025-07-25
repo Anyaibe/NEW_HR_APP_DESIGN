@@ -4,11 +4,92 @@
 {% block title %}Leave Directory{% endblock %}
 
 {% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/leave_directory.css' %}">
+{% endblock %}  
+
+{% block content %}
+    <div class="centered-wrapper">
+        <div class="request-section">
+            <h2>Request</h2>
+            <div class="filters">
+                <input type="text" placeholder="Search by name, leave type, or date...">
+                <button class="filter-btn">Filter</button>
+                <button class="export-btn">Export CSV</button>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab(event, 'all')">All</button>
+                <button class="tab-btn" onclick="openTab(event, 'pending')">Pending</button>
+                <button class="tab-btn" onclick="openTab(event, 'rejected')">Rejected</button>
+            </div>
+
+            <div id="all" class="tab-content active">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Employee</th>
+                            <th>Leave Type</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>Aisha Doe</td>
+                            <td>Sick Leave</td>
+                            <td>14/05</td>
+                            <td>16/05</td>
+                            <td><span class="status pending">Pending</span></td>
+                            <td><button class="action-btn">...</button></td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>Chukwudemezi</td>
+                            <td>Annual Leave</td>
+                            <td>11/05</td>
+                            <td>19/05</td>
+                            <td><span class="status approved">Approved</span></td>
+                            <td><button class="action-btn">...</button></td>
+                        </tr>
+                        <tr>
+                            <td>003</td>
+                            <td>Salemaan</td>
+                            <td>Compassionate Leave</td>
+                            <td>01/02</td>
+                            <td>02/02</td>
+                            <td><span class="status rejected">Rejected</span></td>
+                            <td><button class="action-btn">...</button></td>
+                        </tr>
+                        <tr>
+                            <td>004</td>
+                            <td>Olamide</td>
+                            <td>Annual</td>
+                            <td>23/06</td>
+                            <td>29/06</td>
+                            <td><span class="status cancelled">Cancelled</span></td>
+                            <td><button class="action-btn">...</button></td>
+                        </tr>
+                        <tr>
+                            <td>005</td>
+                            <td>Sesman</td>
+                            <td>Annual</td>
+                            <td>17/06</td>
+                            <td>25/06</td>
+                            <td><span class="status completed">Completed</span></td>
+                            <td><button class="action-btn">...</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
     
 {% endblock %}
 
-{% block content %}{% endblock %}
-
 {% block extra_js %}
-    
+    <script src="{% static 'js/leave_directory.js' %}" defer></script>
 {% endblock %}
