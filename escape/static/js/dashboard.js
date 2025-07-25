@@ -1,4 +1,4 @@
-// Initialize Chart.js
+// Chart setup
 const ctx = document.getElementById('leaveChart').getContext('2d');
 const leaveChart = new Chart(ctx, {
     type: 'line',
@@ -35,27 +35,7 @@ const leaveChart = new Chart(ctx, {
     }
 });
 
-// Sidebar navigation functionality
-// const sidebarItems = document.querySelectorAll('.sidebar a');
-// const contentSections = document.querySelectorAll('.content-section');
-
-// function showSection(sectionId) {
-//     contentSections.forEach(section => {
-//         section.style.display = section.id === sectionId ? 'block' : 'none';
-//     });
-//     sidebarItems.forEach(item => item.classList.remove('active'));
-//     document.querySelector(`.sidebar a[data-section="${sectionId}"]`).classList.add('active');
-// }
-
-// sidebarItems.forEach(item => {
-//     item.addEventListener('click', (event) => {
-//         event.preventDefault();
-//         const targetSectionId = item.getAttribute('data-section');
-//         showSection(targetSectionId);
-//     });
-// });
-
-// Tab functionality for Recent Activity
+// Tab switcher
 function openTab(event, tabName) {
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabContents = document.querySelectorAll('.tab-content');
@@ -65,11 +45,3 @@ function openTab(event, tabName) {
     tabContents.forEach(content => content.classList.remove('active'));
     document.getElementById(tabName).classList.add('active');
 }
-
-
-
-// Initialize the Dashboard as default section
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('dashboard-section').style.display = 'block';
-});
-

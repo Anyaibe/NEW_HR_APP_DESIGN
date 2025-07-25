@@ -4,11 +4,99 @@
 {% block title %}Employee Directory{% endblock %}
 
 {% block extra_css %}
-    
+    <link rel="stylesheet" href="{% static 'css/employee_directory.css' %}">
 {% endblock %}
 
-{% block content %}{% endblock %}
+{% block content %}
+<div class="centered-wrapper">
+    <div id="employee-directory-section" class="content-section">
+    <section class="stats-cards">
+        <div class="card">
+            <h3>Employees On Leave</h3>
+            <p>5/80</p>
+        </div>
+        <div class="card">
+            <h3>Pending Requests</h3>
+            <p>10</p>
+        </div>
+        <div class="card">
+            <h3>Open Positions</h3>
+            <p>2</p>
+        </div>
+        <div class="card">
+            <h3>Pending Applications</h3>
+            <p>5</p>
+        </div>
+    </section>
+
+    <section class="employee-directory">
+        <h2>Employee Directory</h2>
+        <div class="directory-controls">
+            <input type="search" placeholder="Search by name, role, department..." class="directory-search" />
+            <button class="filter-btn">Filter</button>
+            <button class="export-btn">Export CSV</button>
+        </div>
+
+        <table class="employee-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Employee</th>
+                    <th>Gender</th>
+                    <th>Primary Role</th>
+                    <th>Department</th>
+                    <th>Employment Type</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>13/01</td>
+                    <td>Aisha Doe</td>
+                    <td>M</td>
+                    <td>HR Manager</td>
+                    <td>E-GMP</td>
+                    <td><span class="employment-type full-time">Full-Time</span></td>
+                    <td><span class="status present">Present</span></td>
+                </tr>
+                <tr onclick="showProfile('Ali Balogun', 'Data Analyst', 'ali@escapetechnet')">
+                    <td>05/06</td>
+                    <td>Ali Balogun</td>
+                    <td>M</td>
+                    <td>Data Analyst</td>
+                    <td>Mhino</td>
+                    <td><span class="employment-type full-time">Full-Time</span></td>
+                    <td><span class="status in-training">in-training</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <button class="pagination-btn">&lt;</button>
+            <button class="pagination-btn active">1</button>
+            <button class="pagination-btn">2</button>
+            <button class="pagination-btn">3</button>
+            <button class="pagination-btn">&gt;</button>
+        </div>
+    </section>
+
+    <section class="profile" style="display: none;">
+        <div class="profile-header">
+            {% comment %} <div class="profile-picture"><img src="{% static 'img/default-profile.png' %}" alt="Profile Picture"></div> {% endcomment %}
+            <div class="profile-info">
+                <h2></h2>
+                <p></p>
+                <p></p>
+            </div>
+            <button class="edit-profile">Edit</button>
+        </div>
+        <button id="back-to-directory" onclick="showDirectory()" style="display: none;">Back to Directory</button>
+    </section>
+    </div>
+</div>
+
+{% endblock %}
 
 {% block extra_js %}
-    
+    <script src="{% static 'js/employee_directory.js' %}" defer></script>
 {% endblock %}

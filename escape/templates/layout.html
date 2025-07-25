@@ -4,56 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        {% block title %}Django App{% endblock %}
-    </title>
-
-    <!-- Global Styles -->
+    <title>{% block title %}Django App{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'js/layout.js' %}" defer></script>
-
-    <!-- Page-specific CSS -->
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <!-- Header -->
     <header>
         <h1>Hello, Welcome</h1>
         <input type="search" placeholder="Search..." />
     </header>
 
     <div class="dashboard-container">
-        <!-- Sidebar -->
         <div class="sidebar">
             <div class="logo">
                 <h2>Dashboard</h2>
             </div>
             <ul class="nav-links">
-                <li><a href="/" class="active">Dashboard</a></li>
+                <li><a href="{% url 'dashboard' %}" class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">Dashboard</a></li>
 
                 <li class="dropdown">
-                    <span class="dropbtn" onclick="toggleDropdown()">Employees</span>
-                    <div class="dropdown-content" id="employeeDropdown">
-                        <a href="{% url 'employee_directory' %}">Employee Directory</a>
-                        <a href="{% url 'leave_directory' %}">Leave Request</a>
-                        <!-- Add more links here -->
+                    <span class="dropbtn {% if request.resolver_match.url_name == 'employee_directory' or request.resolver_match.url_name == 'leave_directory' %}active{% endif %}" onclick="toggleDropdown()">Employees</span>
+                    <div class="dropdown-content {% if request.resolver_match.url_name == 'employee_directory' or request.resolver_match.url_name == 'leave_directory' %}show{% endif %}" id="employeeDropdown">
+                        <a href="{% url 'employee_directory' %}" class="{% if request.resolver_match.url_name == 'employee_directory' %}active{% endif %}">Employee Directory</a>
+                        <a href="{% url 'leave_directory' %}" class="{% if request.resolver_match.url_name == 'leave_directory' %}active{% endif %}">Leave Request</a>
                     </div>
                 </li>
-            
-                <li><a href="#">Recruitment</a></li>
+
+
+                <li><a href="#" class="{% if request.resolver_match.url_name == 'recruitment' %}active{% endif %}">Recruitment</a></li>
                 <li><a href="#">Hub</a></li>
                 <li><a href="#">Settings</a></li>
             </ul>
-
         </div>
 
-        <!-- Main Content -->
         <main class="main-content">
             {% block content %}{% endblock %}
         </main>
     </div>
 
-    <!-- Page-specific JS -->
     {% block extra_js %}{% endblock %}
 </body>
 </html>
