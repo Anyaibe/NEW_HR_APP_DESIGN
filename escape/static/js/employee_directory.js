@@ -6,39 +6,55 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Handle row click to show profile
     rows.forEach(row => {
-        row.addEventListener('click', function () {
+        row.addEventListener('click', function (e) {
+            // Prevent any other click handlers from interfering
+            e.stopPropagation();
+            
             const name = row.getAttribute('data-name');
             const role = row.getAttribute('data-role');
             const email = row.getAttribute('data-email');
+            const profileImage = row.getAttribute('data-image') || '{% static "images/default-avatar.png" %}';
 
             // Fill in profile details
-            document.querySelector('.profile-info h2').textContent = name;
-            document.querySelector('.profile-info p:nth-child(2)').textContent = role;
-            document.querySelector('.profile-info p:nth-child(3)').textContent = email;
+            const profileNameElement = document.querySelector('.profile-info h2');
+            const profileRoleElement = document.querySelector('.profile-info p:nth-child(2)');
+            const profileEmailElement = document.querySelector('.profile-info p:nth-child(3)');
+            const profileImageElement = document.getElementById('profile-image');
+
+            if (profileNameElement) profileNameElement.textContent = name || 'N/A';
+            if (profileRoleElement) profileRoleElement.textContent = role || 'N/A';
+            if (profileEmailElement) profileEmailElement.textContent = email || 'N/A';
+            if (profileImageElement) profileImageElement.src = profileImage;
 
             // Switch views
-            directorySection.classList.add('hidden');
-            profileSection.classList.remove('hidden');
-            backButton.classList.remove('hidden');
+            if (directorySection) directorySection.classList.add('hidden');
+            if (profileSection) profileSection.classList.remove('hidden');
         });
     });
 
     // Back to Directory button
     if (backButton) {
-        backButton.addEventListener('click', function () {
-            profileSection.classList.add('hidden');
-            directorySection.classList.remove('hidden');
-            backButton.classList.add('hidden');
+        backButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            showDirectory();
         });
     }
+
+    // Function to show directory (can be called from anywhere)
+    window.showDirectory = function() {
+        if (profileSection) profileSection.classList.add('hidden');
+        if (directorySection) directorySection.classList.remove('hidden');
+    };
 
     // Search filter
     const searchInput = document.querySelector('.directory-search');
     if (searchInput) {
         searchInput.addEventListener('input', function () {
             const searchValue = this.value.toLowerCase();
-            document.querySelectorAll('.employee-table tbody tr').forEach(row => {
-                row.style.display = row.innerText.toLowerCase().includes(searchValue) ? '' : 'none';
+            const tableRows = document.querySelectorAll('.employee-table tbody tr');
+            tableRows.forEach(row => {
+                const rowText = row.innerText.toLowerCase();
+                row.style.display = rowText.includes(searchValue) ? '' : 'none';
             });
         });
     }
@@ -64,43 +80,60 @@ document.addEventListener('DOMContentLoaded', function () {
     const nextBtn = document.getElementById('next-btn');
 
     // Show modal
-    addEmployeeBtn.addEventListener('click', () => {
-        modal.classList.remove('hidden');
-    });
+    if (addEmployeeBtn) {
+        addEmployeeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.remove('hidden');
+        });
+    }
 
     // Tab switching
-    tabPersonal.addEventListener('click', () => {
-        tabPersonal.classList.add('active');
-        tabProfessional.classList.remove('active');
-        personalSection.classList.add('active');
-        professionalSection.classList.remove('active');
-    });
+    if (tabPersonal) {
+        tabPersonal.addEventListener('click', () => {
+            tabPersonal.classList.add('active');
+            tabProfessional.classList.remove('active');
+            personalSection.classList.add('active');
+            professionalSection.classList.remove('active');
+        });
+    }
 
-    tabProfessional.addEventListener('click', () => {
-        tabProfessional.classList.add('active');
-        tabPersonal.classList.remove('active');
-        professionalSection.classList.add('active');
-        personalSection.classList.remove('active');
-    });
+    if (tabProfessional) {
+        tabProfessional.addEventListener('click', () => {
+            tabProfessional.classList.add('active');
+            tabPersonal.classList.remove('active');
+            professionalSection.classList.add('active');
+            personalSection.classList.remove('active');
+        });
+    }
 
     // Validation before switching tab
-    nextBtn.addEventListener('click', () => {
-        const inputs = personalSection.querySelectorAll('input, select');
-        for (let input of inputs) {
-            if (!input.checkValidity()) {
-                input.reportValidity();
-                return;
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            const inputs = personalSection.querySelectorAll('input, select');
+            for (let input of inputs) {
+                if (!input.checkValidity()) {
+                    input.reportValidity();
+                    return;
+                }
             }
-        }
-        tabProfessional.click();
-    });
+            tabProfessional.click();
+        });
+    }
 
     // Cancel button logic
     document.querySelectorAll('.close-modal').forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
             modal.classList.add('hidden');
         });
     });
 
+    // Close modal when clicking outside
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+    }
 });
-

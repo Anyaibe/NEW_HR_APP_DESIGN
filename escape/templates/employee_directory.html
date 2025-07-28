@@ -73,16 +73,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>13/01</td>
-                        <td>Aisha Doe</td>
-                        <td>M</td>
-                        <td>HR Manager</td>
-                        <td>E-GMP</td>
-                        <td><span class="employment-type full-time">Full-Time</span></td>
-                        <td><span class="status present">Present</span></td>
-                    </tr>
-                    <tr class="clickable-row" data-name="Ali Balogun" data-role="Data Analyst" data-email="ali@escapetechnet">
+                    <!-- Update your clickable rows to include data-image attribute -->
+                    <tr class="clickable-row" 
+                        data-name="Ali Balogun" 
+                        data-role="Data Analyst" 
+                        data-email="ali@escapetechnet"
+                        data-image="{% static 'images/ali-profile.jpg' %}">
                         <td>05/06</td>
                         <td>Ali Balogun</td>
                         <td>M</td>
@@ -90,6 +86,20 @@
                         <td>Mhino</td>
                         <td><span class="employment-type full-time">Full-Time</span></td>
                         <td><span class="status in-training">in-training</span></td>
+                    </tr>
+
+                    <!-- For rows without custom images, you can omit data-image and it will use default -->
+                    <tr class="clickable-row" 
+                        data-name="Aisha Doe" 
+                        data-role="HR Manager" 
+                        data-email="aisha@company.com">
+                        <td>13/01</td>
+                        <td>Aisha Doe</td>
+                        <td>F</td>
+                        <td>HR Manager</td>
+                        <td>E-GMP</td>
+                        <td><span class="employment-type full-time">Full-Time</span></td>
+                        <td><span class="status present">Present</span></td>
                     </tr>
                 </tbody>
             </table>
