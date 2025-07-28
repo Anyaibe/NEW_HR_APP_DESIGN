@@ -1,35 +1,106 @@
-// Search filtering
-const searchInput = document.querySelector('.directory-search');
-if (searchInput) {
-    searchInput.addEventListener('input', function () {
-        const searchValue = this.value.toLowerCase();
-        document.querySelectorAll('.employee-table tbody tr').forEach(row => {
-            row.style.display = row.innerText.toLowerCase().includes(searchValue) ? '' : 'none';
+document.addEventListener('DOMContentLoaded', function () {
+    const rows = document.querySelectorAll('.clickable-row');
+    const directorySection = document.getElementById('employee-directory-section');
+    const profileSection = document.querySelector('.profile');
+    const backButton = document.getElementById('back-to-directory');
+
+    // Handle row click to show profile
+    rows.forEach(row => {
+        row.addEventListener('click', function () {
+            const name = row.getAttribute('data-name');
+            const role = row.getAttribute('data-role');
+            const email = row.getAttribute('data-email');
+
+            // Fill in profile details
+            document.querySelector('.profile-info h2').textContent = name;
+            document.querySelector('.profile-info p:nth-child(2)').textContent = role;
+            document.querySelector('.profile-info p:nth-child(3)').textContent = email;
+
+            // Switch views
+            directorySection.classList.add('hidden');
+            profileSection.classList.remove('hidden');
+            backButton.classList.remove('hidden');
         });
     });
-}
 
-// Pagination toggle
-const paginationBtns = document.querySelectorAll('.pagination-btn');
-paginationBtns.forEach(btn => {
-    btn.addEventListener('click', function () {
-        paginationBtns.forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
+    // Back to Directory button
+    if (backButton) {
+        backButton.addEventListener('click', function () {
+            profileSection.classList.add('hidden');
+            directorySection.classList.remove('hidden');
+            backButton.classList.add('hidden');
+        });
+    }
+
+    // Search filter
+    const searchInput = document.querySelector('.directory-search');
+    if (searchInput) {
+        searchInput.addEventListener('input', function () {
+            const searchValue = this.value.toLowerCase();
+            document.querySelectorAll('.employee-table tbody tr').forEach(row => {
+                row.style.display = row.innerText.toLowerCase().includes(searchValue) ? '' : 'none';
+            });
+        });
+    }
+
+    // Pagination button highlight
+    const paginationBtns = document.querySelectorAll('.pagination-btn');
+    paginationBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            paginationBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+        });
     });
+
+    console.log('✅ employee_directory.js loaded');
+
+    // Modal logic for Add Employee
+    const addEmployeeBtn = Array.from(document.querySelectorAll('.directory-controls .filter-btn')).find(btn => btn.textContent.includes('Add'));
+    const modal = document.getElementById('add-employee-modal');
+    const tabPersonal = document.getElementById('tab-personal');
+    const tabProfessional = document.getElementById('tab-professional');
+    const personalSection = document.getElementById('personal-section');
+    const professionalSection = document.getElementById('professional-section');
+    const nextBtn = document.getElementById('next-btn');
+
+    // Show modal
+    addEmployeeBtn.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+    });
+
+    // Tab switching
+    tabPersonal.addEventListener('click', () => {
+        tabPersonal.classList.add('active');
+        tabProfessional.classList.remove('active');
+        personalSection.classList.add('active');
+        professionalSection.classList.remove('active');
+    });
+
+    tabProfessional.addEventListener('click', () => {
+        tabProfessional.classList.add('active');
+        tabPersonal.classList.remove('active');
+        professionalSection.classList.add('active');
+        personalSection.classList.remove('active');
+    });
+
+    // Validation before switching tab
+    nextBtn.addEventListener('click', () => {
+        const inputs = personalSection.querySelectorAll('input, select');
+        for (let input of inputs) {
+            if (!input.checkValidity()) {
+                input.reportValidity();
+                return;
+            }
+        }
+        tabProfessional.click();
+    });
+
+    // Cancel button logic
+    document.querySelectorAll('.close-modal').forEach(btn => {
+        btn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+    });
+
 });
 
-// Profile Viewer Logic
-function showProfile(name, role, email) {
-    document.getElementById('employee-directory-section').style.display = 'none';
-    document.querySelector('.profile-info h2').textContent = name;
-    document.querySelector('.profile-info p:nth-child(2)').textContent = role;
-    document.querySelector('.profile-info p:nth-child(3)').textContent = email;
-    document.querySelector('.profile').style.display = 'block';
-    document.getElementById('back-to-directory').style.display = 'block';
-}
-
-function showDirectory() {
-    document.querySelector('.profile').style.display = 'none';
-    document.getElementById('employee-directory-section').style.display = 'block';
-    document.getElementById('back-to-directory').style.display = 'none';
-}

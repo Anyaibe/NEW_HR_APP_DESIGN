@@ -5,98 +5,239 @@
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/employee_directory.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="centered-wrapper">
     <div id="employee-directory-section" class="content-section">
-    <section class="stats-cards">
-        <div class="card">
-            <h3>Employees On Leave</h3>
-            <p>5/80</p>
-        </div>
-        <div class="card">
-            <h3>Pending Requests</h3>
-            <p>10</p>
-        </div>
-        <div class="card">
-            <h3>Open Positions</h3>
-            <p>2</p>
-        </div>
-        <div class="card">
-            <h3>Pending Applications</h3>
-            <p>5</p>
-        </div>
-    </section>
+        <section class="stats-cards">
+            <div class="card">
+                <div class="card-inner">
+                    <img src="{% static 'images/user-group.svg' %}" alt="Total Employee" class="stats-icon">
+                    <div class="text">
+                        <h3>Total Employee</h3>
+                        <p>20</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <img src="{% static 'images/user-add.svg' %}" alt="New Employee" class="stats-icon">
+                    <div class="text">
+                        <h3>New Employee</h3>
+                        <p>3 in January</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <img src="{% static 'images/male 1.svg' %}" alt="Departments" class="stats-icon">
+                    <div class="text">
+                        <h3>Departments</h3>
+                        <p>5</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <img src="{% static 'images/clock-05.svg' %}" alt="On Leave" class="stats-icon">
+                    <div class="text">
+                        <h3>On Leave</h3>
+                        <p>5</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section class="employee-directory">
-        <h2>Employee Directory</h2>
-        <div class="directory-controls">
-            <input type="search" placeholder="Search by name, role, department..." class="directory-search" />
-            <button class="filter-btn">Filter</button>
-            <button class="export-btn">Export CSV</button>
-        </div>
 
-        <table class="employee-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Employee</th>
-                    <th>Gender</th>
-                    <th>Primary Role</th>
-                    <th>Department</th>
-                    <th>Employment Type</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>13/01</td>
-                    <td>Aisha Doe</td>
-                    <td>M</td>
-                    <td>HR Manager</td>
-                    <td>E-GMP</td>
-                    <td><span class="employment-type full-time">Full-Time</span></td>
-                    <td><span class="status present">Present</span></td>
-                </tr>
-                <tr onclick="showProfile('Ali Balogun', 'Data Analyst', 'ali@escapetechnet')">
-                    <td>05/06</td>
-                    <td>Ali Balogun</td>
-                    <td>M</td>
-                    <td>Data Analyst</td>
-                    <td>Mhino</td>
-                    <td><span class="employment-type full-time">Full-Time</span></td>
-                    <td><span class="status in-training">in-training</span></td>
-                </tr>
-            </tbody>
-        </table>
+        <section class="employee-directory">
+            <h2>Employee Directory</h2>
+            <div class="directory-controls">
+                <input type="search" placeholder="Search by name, role, department..." class="directory-search" />
+                <button class="filter-btn">Filter</button>
+                <button class="export-btn">Export CSV</button>
+                <button class="filter-btn">Add Employee</button>
+            </div>
 
-        <div class="pagination">
-            <button class="pagination-btn">&lt;</button>
-            <button class="pagination-btn active">1</button>
-            <button class="pagination-btn">2</button>
-            <button class="pagination-btn">3</button>
-            <button class="pagination-btn">&gt;</button>
-        </div>
-    </section>
+            <table class="employee-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Employee</th>
+                        <th>Gender</th>
+                        <th>Primary Role</th>
+                        <th>Department</th>
+                        <th>Employment Type</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>13/01</td>
+                        <td>Aisha Doe</td>
+                        <td>M</td>
+                        <td>HR Manager</td>
+                        <td>E-GMP</td>
+                        <td><span class="employment-type full-time">Full-Time</span></td>
+                        <td><span class="status present">Present</span></td>
+                    </tr>
+                    <tr class="clickable-row" data-name="Ali Balogun" data-role="Data Analyst" data-email="ali@escapetechnet">
+                        <td>05/06</td>
+                        <td>Ali Balogun</td>
+                        <td>M</td>
+                        <td>Data Analyst</td>
+                        <td>Mhino</td>
+                        <td><span class="employment-type full-time">Full-Time</span></td>
+                        <td><span class="status in-training">in-training</span></td>
+                    </tr>
+                </tbody>
+            </table>
 
-    <section class="profile" style="display: none;">
+            <div class="pagination">
+                <button class="pagination-btn">&lt;</button>
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn">&gt;</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- ✅ Profile section (hidden by default) -->
+    <section class="profile hidden">
         <div class="profile-header">
-            {% comment %} <div class="profile-picture"><img src="{% static 'img/default-profile.png' %}" alt="Profile Picture"></div> {% endcomment %}
             <div class="profile-info">
                 <h2></h2>
                 <p></p>
                 <p></p>
             </div>
-            <button class="edit-profile">Edit</button>
+            <button class="edit-profile">Edit info</button>
         </div>
-        <button id="back-to-directory" onclick="showDirectory()" style="display: none;">Back to Directory</button>
+        <hr>
+        <button id="back-to-directory" class="back-btn" onclick="showDirectory()">Back to Directory</button>
     </section>
+    
+    <!-- ✅ Add Employee Modal -->
+    <div id="add-employee-modal" class="modal hidden">
+        <form class="addEmployeeModal">
+            <p class="Header-links">
+                <a href="{% url 'employee_directory' %}" class="{% if request.resolver_match.url_name == 'employee_directory' %}active{% endif %}">Employee</a>
+                <span class="arrow"> > </span>
+                <a href="#" class="add-emp">Add Employee</a>
+            </p>
+        
+            <div class="info-specification">
+                <div id="tab-personal" class="active">
+                    <i class="fas fa-user"></i>
+                    <p>Personal Information</p>
+                </div>
+                <div id="tab-professional">
+                    <i class="fas fa-briefcase"></i>
+                    <p>Professional Information</p>
+                </div>
+            </div>
+            <hr>
+        
+            <!-- Personal Section -->
+            <div id="personal-section" class="tab-section active">
+                <div class="photo-box">
+                    <label for="profile-photo" class="photo-placeholder">📷</label>
+                    <input type="file" id="profile-photo" style="display: none;">
+                </div>
+            
+                <div class="input-row">
+                    <input type="text" placeholder="First Name" class="input-third" required>
+                    <input type="text" placeholder="Last Name" class="input-third" required>
+                    <input type="text" placeholder="Mobile Number" class="input-third" required>
+                </div>
+            
+                <div class="input-row">
+                    <input type="email" placeholder="Email Address" class="input-third" required>
+                    <input type="date" class="input-third" required>
+                    <select class="input-third" required>
+                        <option disabled selected>Marital Status</option>
+                        <option>Single</option>
+                        <option>Married</option>
+                    </select>
+                </div>
+            
+                <div class="input-row">
+                    <select class="input-third" required>
+                        <option disabled selected>Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                    <select class="input-third" required>
+                        <option disabled selected>Nationality</option>
+                        <option>Nigerian</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+            
+                <input type="text" class="input-fourth" placeholder="Enter Address" required>
+            
+                <div class="input-row">
+                    <select class="input-half" required>
+                        <option disabled selected>State</option>
+                        <option>Lagos</option>
+                        <option>Abuja</option>
+                    </select>
+                    <input type="text" placeholder="City" class="input-half" required>
+                </div>
+            
+                <div class="btn-container">
+                    <button type="reset" class="cls-btn close-modal">Cancel</button>
+                    <button type="button" class="add-btn" id="next-btn">Next</button>
+                </div>
+            </div>
+        
+            <!-- Professional Section -->
+            <div id="professional-section" class="tab-section">
+                <div class="input-row">
+                    <select class="input-third" required>
+                        <option disabled selected>Select Employee Type</option>
+                        <option>Full-Time</option>
+                        <option>Part-Time</option>
+                        <option>Contract</option>
+                    </select>
+                    <input type="text" placeholder="Contract Length" class="input-third" required>
+                    <input type="email" placeholder="Company Email Address" class="input-third" required>
+                </div>
+            
+                <div class="input-row">
+                    <select class="input-half" required>
+                        <option disabled selected>Select Department</option>
+                        <option>HR</option>
+                        <option>Engineering</option>
+                    </select>
+                    <input type="text" placeholder="Enter Designation" class="input-half" required>
+                </div>
+            
+                <div class="input-row">
+                    <select class="input-third" required>
+                        <option disabled selected>Select Working Days</option>
+                        <option>Mon - Fri</option>
+                        <option>Mon - Sat</option>
+                    </select>
+                    <input type="text" placeholder="Working Hours" class="input-third" required>
+                    <input type="date" class="input-third" required>
+                </div>
+            
+                <input type="text" class="input-fourth" placeholder="Enter Office Location" required>
+            
+                <div class="btn-container">
+                    <button type="reset" class="cls-btn close-modal">Cancel</button>
+                    <button type="submit" class="add-btn">Add</button>
+                </div>
+            </div>
+        </form>
     </div>
-</div>
 
+</div>
 {% endblock %}
 
 {% block extra_js %}
     <script src="{% static 'js/employee_directory.js' %}" defer></script>
+    <script src="{% static 'js/all.min.js' %}" defer></script>
 {% endblock %}

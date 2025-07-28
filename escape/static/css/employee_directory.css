@@ -15,6 +15,16 @@
     margin-top: 20px;
 }
 
+.stats-icon {
+    font-size: 28px;
+    color: #000;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .card {
     background-color: #fff;
     padding: 20px;
@@ -22,10 +32,30 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: calc(25% - 20px);
     text-align: center;
+    height: 70px;
 }
 
-.card h3 {
-    margin: 0 0 10px;
+.card-inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    text-align: left;
+    margin-top: 15px;
+}
+
+.card .text h3 {
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+    color: #555;
+}
+
+.card .text p {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 2px 0 0 0;
+    color: #000;
 }
 
 .directory-controls {
@@ -152,7 +182,6 @@
 
 /* Profile Section */
 .profile {
-    display: none; 
     background-color: #fff;
     border-radius: 10px;
     padding: 20px;
@@ -193,6 +222,11 @@
 .edit-profile:hover {
     background-color: #2980b9;
 }
+
+.clickable-row {
+    cursor: pointer;
+}
+
 /* Tabs */
 .tabs {
     display: flex;
@@ -227,9 +261,9 @@
     line-height: 1.6;
 }
 
-.content-section { display: none; } /* Hide all sections by default */
-#dashboard-section { display: block; } /* Show the dashboard by default */
-#employee-directory-section { display: block; } /* Show the employee directory by default */
+/* .content-section { display: none; } Hide all sections by default
+#dashboard-section { display: block; } Show the dashboard by default
+#employee-directory-section { display: block; } Show the employee directory by default */
 
 /* Center the page content within the main-content area */
 .centered-wrapper {
@@ -238,3 +272,137 @@
     padding: 30px 20px;
 }
 
+.hidden {
+    display: none !important;
+}
+
+/* Modal Overlay */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Add Employee Modal */
+.addEmployeeModal {
+    background-color: #fff;
+    width: 900px;
+    max-width: 100%;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.Header-links {
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.Header-links a { color: gray; text-decoration: none; }
+.Header-links .add-emp { color: #071C50; }
+
+.info-specification {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.info-specification div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.info-specification i {
+    color: #333;
+}
+
+.info-specification .active p {
+    color: #0585B8;
+}
+
+.input-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.input-third, .input-half {
+    flex: 1;
+    height: 45px;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.input-fourth {
+    width: 100%;
+    height: 95px;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-container button {
+    height: 42px;
+    width: 85px;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+}
+
+.add-btn {
+    background-color: #0585B8;
+    color: white;
+}
+
+.cls-btn {
+    background-color: rgb(237, 236, 236);
+}
+
+.photo-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    width: 110px;
+    margin-bottom: 10px;
+}
+
+.photo-placeholder {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.tab-section {
+    display: none;
+}
+
+.tab-section.active {
+    display: block;
+}
