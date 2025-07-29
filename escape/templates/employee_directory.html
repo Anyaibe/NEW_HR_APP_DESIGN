@@ -92,7 +92,8 @@
                     <tr class="clickable-row" 
                         data-name="Aisha Doe" 
                         data-role="HR Manager" 
-                        data-email="aisha@company.com">
+                        data-email="aisha@company.com"
+                        data-image="{% static 'images/avatar.svg' %}">
                         <td>13/01</td>
                         <td>Aisha Doe</td>
                         <td>F</td>
@@ -114,19 +115,205 @@
         </section>
     </div>
 
-    <!-- ✅ Profile section (hidden by default) -->
-    <section class="profile hidden">
-        <div class="profile-header">
-            <div class="profile-info">
-                <h2></h2>
-                <p></p>
-                <p></p>
-            </div>
-            <button class="edit-profile">Edit info</button>
+    <!-- Enhanced Profile section (hidden by default) -->
+<section class="profile hidden">
+    <!-- Profile Header -->
+    <div class="profile-header">
+        <div class="profile-picture">
+            <img id="profile-image" src="{% static 'images/avatar.svg' %}" alt="Profile Picture">
         </div>
-        <hr>
-        <button id="back-to-directory" class="back-btn" onclick="showDirectory()">Back to Directory</button>
-    </section>
+        <div class="profile-info">
+            <h2 id="profile-name">Employee Name</h2>
+            <div class="profile-details">
+                <p><i class="fas fa-briefcase"></i> <span id="profile-role">Role</span></p>
+                <p><i class="fas fa-envelope"></i> <span id="profile-email">Email</span></p>
+            </div>
+        </div>
+        <button class="edit-profile">
+            <i class="fas fa-edit"></i> Edit Profile
+        </button>
+    </div>
+
+    <!-- Profile Navigation Sidebar -->
+    <div class="profile-content">
+        <div class="profile-sidebar">
+            <div class="profile-nav">
+                <button class="profile-nav-btn active" data-tab="profile-tab">
+                    <i class="fas fa-user"></i> Profile
+                </button>
+                <button class="profile-nav-btn" data-tab="leave-tab">
+                    <i class="fas fa-calendar-alt"></i> Leave
+                </button>
+            </div>
+        </div>
+
+        <!-- Profile Tab Content -->
+        <div class="profile-main">
+            <!-- Profile Tab -->
+            <!-- Profile Tab Content - This contains both info sections -->
+            <div id="profile-tab" class="profile-tab-content active">
+                <!-- Sub-tabs for Personal and Professional Info -->
+                <div class="info-tabs">
+                    <button class="info-tab-btn active" data-info-tab="personal-info">
+                        <i class="fas fa-user"></i> Personal Information
+                    </button> 
+                    <button class="info-tab-btn" data-info-tab="professional-info">
+                        <i class="fas fa-briefcase"></i> Professional Information
+                    </button>
+                </div>
+            
+                <!-- Personal Information Section -->
+                <div id="personal-info" class="info-content active">
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>First Name</label>
+                            <span id="first-name">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Last Name</label>
+                            <span id="last-name">-</span>
+                        </div>
+
+                        <div class="info-item">
+                            <label>Mobile Number</label>
+                            <span id="mobile-number">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Email Address</label>
+                            <span id="email-address">-</span>
+                        </div>
+
+                        <div class="info-item">
+                            <label>Date of Birth</label>
+                            <span id="date-of-birth">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Marital Status</label>
+                            <span id="marital-status">-</span>
+                        </div>
+
+                        <div class="info-item">
+                            <label>Gender</label>
+                            <span id="gender">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Nationality</label>
+                            <span id="nationality">-</span>
+                        </div>
+                    
+                        <!-- Full width items -->
+                        <div class="info-item full-width">
+                            <label>Home Address</label>
+                            <span id="home-address">-</span>
+                        </div>
+
+                        <div class="info-item">
+                            <label>City</label>
+                            <span id="city">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>State</label>
+                            <span id="state">-</span>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Professional Information Section -->
+                <div id="professional-info" class="info-content">
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>Employee ID</label>
+                            <span id="employee-id">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Employee Type</label>
+                            <span id="employee-type">-</span>
+                        </div>
+
+                        <div class="info-item">
+                            <label>Company Email Address</label>
+                            <span id="company-email">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Department</label>
+                            <span id="department">-</span>
+                        </div>
+
+                        <div class="info-item">
+                            <label>Designation</label>
+                            <span id="designation">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Working Days</label>
+                            <span id="working-days">-</span>
+                        </div>
+
+                        <div class="info-item">
+                            <label>Working Hours</label>
+                            <span id="working-hours">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Join Date</label>
+                            <span id="join-date">-</span>
+                        </div>
+
+                        <div class="info-item">
+                            <label>Contract Duration</label>
+                            <span id="contract-duration">-</span>
+                        </div>
+                        <!-- Empty div to maintain grid alignment when office address is full-width -->
+                        <div></div>
+
+                        <!-- Full width item -->
+                        <div class="info-item full-width">
+                            <label>Office Address</label>
+                            <span id="office-address">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leave Tab Content - UNCHANGED, exactly as it was -->
+            <div id="leave-tab" class="profile-tab-content">
+                <div class="leave-header">
+                    <div class="leave-controls">
+                        <div class="sort-dropdown">
+                            <label>Sort By:</label>
+                            <select id="leave-sort">
+                                <option value="latest">Latest</option>
+                                <option value="oldest">Oldest</option>
+                                <option value="status">Status</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="leave-table-container">
+                    <table class="leave-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Leave Type</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leave-history-tbody">
+                            <!-- Leave history will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+    <!-- Back Button -->
+    <div class="profile-footer">
+        <button id="back-to-directory" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Directory
+        </button>
+    </div>
+</section>
     
     <!-- ✅ Add Employee Modal -->
     <div id="add-employee-modal" class="modal hidden">
