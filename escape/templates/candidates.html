@@ -1,0 +1,233 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/candidates_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+{% endblock %}
+
+{% block content %}
+            <div class="candidte-cta">
+            <div class="current-section">
+                <h2>Current Openings</h2>
+                <button>Sort by: latest &nbsp;<i class="fa fas fa-caret-down"></i></button>
+            </div>
+    
+            <div class="card-container">
+                <div class="card-opened">
+                    <h2>Growth Manager</h2>
+                    <p>Posted 5 days ago</p>
+                    <button>Remote</button>
+                    <button>3months exp+</button>
+                    <h1>38 <span>applications</span></h1>
+                    <p class="cls-tag-opened">10 in last week</p>
+                </div>
+    
+                <div class="card-opened">
+                    <h2>Growth Manager</h2>
+                    <p>Posted 5 days ago</p>
+                    <button>Remote</button>
+                    <button>3months exp+</button>
+                    <h1>38 <span>applications</span></h1>
+                    <p class="cls-tag-opened">10 in last week</p>
+                </div>
+    
+                <div class="card-opened">
+                    <h2>Growth Manager</h2>
+                    <p>Posted 5 days ago</p>
+                    <button>Remote</button>
+                    <button>3months exp+</button>
+                    <h1>38 <span>applications</span></h1>
+                    <p class="cls-tag-opened">10 in last week</p>
+                </div>
+            </div>
+
+            <!-- Candidates Table Design -->
+            <h3>Candidates</h3>
+            <div class="candidates-container">
+                <div class="filter-section">
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="search" placeholder="Search by name, leave-type, and date" class="search-bar">
+                    </div>
+                    <div class="filter-tags">
+                        <ul>
+                            <li><button class="filter-btn">Filter &nbsp; <i class="fa-solid fa-arrow-down-wide-short"></i></button></li>
+                            <li><button class="export-btn">Export CSV</button></li>
+                        </ul>
+                    </div>
+                </div>
+    
+                <div class="candidate-filters">
+                    <div class="info">
+                        <p>All</p>
+                        <p>Pending</p>
+                        <p>Accepted</p>
+                        <p>Rejected</p>
+                    </div>
+                    <hr>
+    
+                    <table class="candidates-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Candidate Name</th>
+                                <th>Applied Role</th>
+                                <th>Resume Rating</th>
+                                <th>Stage</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>13/01</td>
+                                <td>Aisha Doe</td>
+                                <td>Growth Manager</td>
+                                <td>4</td>
+                                <td>Review</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td><button>⋯</button></td>
+                            </tr>
+                            <tr>
+                                <td>13/01</td>
+                                <td>John Smith</td>
+                                <td>Growth Manager</td>
+                                <td>4</td>
+                                <td>Review</td>
+                                <td><span class="status approved">Approved</span></td>
+                                <td><button>⋯</button></td>
+                            </tr>
+                            <tr>
+                                <td>13/01</td>
+                                <td>Jane Wilson</td>
+                                <td>Growth Manager</td>
+                                <td>4</td>
+                                <td>Review</td>
+                                <td><span class="status rejected">Rejected</span></td>
+                                <td><button>⋯</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Candidate details -->
+        <div id="candidate-details" class="candidate-details">
+            <div class="candidate-details-heading">
+                <h3>Candidate Details</h3>
+                <button id="close-btn" class="close-btn">×</button>
+            </div>
+    
+            <div class="candidate-details-info">
+                <div class="role">
+                    <h4>Aisha Doe</h4>
+                    <p>Growth Manager</p>
+                </div>
+    
+                <div class="data">
+                    <div class="candidate-email-phone">
+                        <div class="img-styling">
+                            <i class="fas fa-envelope" style="color: #666;"></i>
+                        </div>
+                        <div class="email">
+                            <p>Email</p>
+                            <p class="full-details">malaika.br@gmail.com</p>
+                        </div>
+                    </div>
+    
+                    <div class="candidate-phone-email">
+                        <div class="img-styling">
+                            <i class="fas fa-phone" style="color: #666;"></i>
+                        </div>
+                        <div class="phone-no">
+                            <p>Phone Number</p>
+                            <p class="full-details">+11 5423-6548</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="candidate-review-result">
+                <h4>Application Details</h4>
+                <div class="progress-container">
+                    <div class="progress-line"></div>
+                    
+                    <div class="progress-step">
+                        <div class="step-circle completed">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="step-content">
+                            <h5>Shortlisted</h5>
+                            <p class="date">(March 20, 2024)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-step">
+                        <div class="step-circle under-review">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="step-content">
+                            <h5>First Contact</h5>
+                            <span class="status-badge">Under Review</span>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-step">
+                        <div class="step-circle pending">3</div>
+                        <div class="step-content">
+                            <h5>Interview</h5>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-step">
+                        <div class="step-circle pending">4</div>
+                        <div class="step-content">
+                            <h5>HR Review</h5>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-step">
+                        <div class="step-circle pending">5</div>
+                        <div class="step-content">
+                            <h5>Hired</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="candidate-details-links">
+                <h4>Links</h4>
+                <ul class="candidate-review-results">
+                    <li><i class="fa-solid fa-link"></i> <a href="#">LinkedIn</a></li>
+                    <li><i class="fa-solid fa-link"></i> <a href="#">GitHub</a></li>
+                    <li><i class="fa-solid fa-link"></i> <a href="#">Blog</a></li>
+                </ul>
+                
+                <h4>Documents</h4>
+                <div class="candidate-details-documents">
+                    <p>Resume</p>
+                    <i class="fas fa-download" style="color: #666; cursor: pointer;"></i>
+                </div>
+    
+                <div class="candidate-details-documents">
+                    <p>Cover Letter</p>
+                    <i class="fas fa-download" style="color: #666; cursor: pointer;"></i>
+                </div>
+    
+                <div class="candidate-details-documents">
+                    <p>Salary Slip</p>
+                    <i class="fas fa-download" style="color: #666; cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'js/candidates.js' %}" defer></script>
+    <script src="{% static 'js/all.min.js' %}" defer></script>
+{% endblock %}

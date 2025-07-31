@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/jobs.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="job-container">
+            <div class="Filter-section">
+                <div class="search-container">
+                    <img src="{% static 'images/search.svg' %}" alt="Search Icon" class="search-icon">
+                    <input type="search" class="search-bar" placeholder="Search by position, location">
+                </div>
+            <ul class="filter-tags">
+                <li><button class="sort-btn">Sort by latest</button></li>
+                <li><button class="filter-btn">Filter</button></li>
+                <li> <button class="add-btn">Add new Job</button></li>
+            </ul>
+
+            </div>
+            <div class="job-cards">
+                <div class="card-container">
+                    <div class="card-closed">
+                        <h2>Sir Ux Designer</h2>
+                        <p>Posted 2 days ago</p>
+                        <button>Lagos</button>
+                        <button>3months exp+</button>
+                        <h1>45 <span>applications</span></h1>
+                        <p class="cls-tag">closed</p>
+                    </div>
+    
+                    <div class="card-opened">
+                        <h2>Growth Manager</h2>
+                        <p>Posted 5 days ago</p>
+                        <button>Remote</button>
+                        <button>3months exp+</button>
+                        <h1>38 <span>applications</span></h1>
+                        <p class="cls-tag-opened">10 in last week</p>
+                    </div>
+    
+                    <div class="card-opened">
+                        <h2>Financial Analyst</h2>
+                        <p>Posted 2 days ago</p>
+                        <button>Mumbai</button>
+                        <button>5years exp+</button>
+                        <h1>25 <span>applications</span></h1>
+                        <p class="cls-tag-opened">25 in last week</p>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="card-container">
+                    <div class="card-opened">
+                        <h2>Sir Ux Designer</h2>
+                        <p>Posted 2 days ago</p>
+                        <button>Lagos</button>
+                        <button>3years exp+</button>
+                        <h1>45 <span>applications</span></h1>
+                        <p class="cls-tag-opened">25 in last week</p>
+                    </div>
+    
+                    <div class="card-closed">
+                        <h2>Sir Ux Designer</h2>
+                        <p>Posted 2 days ago</p>
+                        <button>Lagos</button>
+                        <button>3months exp+</button>
+                        <h1>45 <span>applications</span></h1>
+                        <p class="cls-tag">closed</p>
+                    </div>
+    
+                    <div class="card-opened">
+                        <h2>Sir Ux Designer</h2>
+                        <p>Posted 2 days ago</p>
+                        <button>Lagos</button>
+                        <button>3months exp+</button>
+                        <h1>45 <span>applications</span></h1>
+                        <p class="cls-tag-opened">closed</p>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'js/all.min.js' %}" defer></script>
+    <script src="{% static 'js/jobs.js' %}" defer></script>
+{% endblock %}

@@ -1,0 +1,512 @@
+ /* General layout */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Urbanist', sans-serif;
+            background-color: #f4f6f9;
+        }
+
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            background-color: #fff;
+            width: 220px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .logo h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin-top: 40px;
+        }
+
+        .nav-links li {
+            margin-bottom: 20px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #555;
+            font-size: 16px;
+            padding: 10px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links li a.active {
+            background-color: #e3efff;
+            border-radius: 8px;
+            color: #007bff;
+        }
+
+        .nav-links li a:hover {
+            background-color: #ececec;
+            border-radius: 8px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        header input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            width: 200px;
+        }
+
+        /* Candidate Styles */
+        .candidte-cta {
+            flex: 1;
+            padding: 1.5em;
+            font-family: "Urbanist", serif;
+        }
+
+        .current-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .current-section button {
+            width: 118px;
+            height: 32px;
+            border-radius: 9px;
+            border: none;
+            background-color: white;
+            cursor: pointer;
+            box-shadow: 0.2px 0.5px 1.2px 0.2px gray;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .card-opened {
+            background-color: #fefefe;
+            border-radius: 10px;
+            border: none;
+            width: 350px;
+            padding: 0.5em;
+            margin-top: 10px;
+            border-left: 4px #0585B8 solid !important;
+        }
+
+        .card-opened h2 {
+            font-size: 15px;
+        }
+
+        .card-opened button {
+            background-color: #0585B8;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        .card-opened p {
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+
+        .card-opened span {
+            font-size: 12px;
+        }
+
+        .cls-tag-opened {
+            margin-top: -40px;
+            margin-left: 200px;
+            color: green;
+        }
+
+        /* Candidates Table */
+        .candidates-container {
+            padding: 1.5em;
+            background-color: #fefefe;
+            border-radius: 9px;
+            margin-top: 20px;
+        }
+
+        /* Search-bar Styling */
+        .search-container {
+            display: flex;
+            align-items: center;
+            width: 300px;
+            position: relative;
+            box-shadow: 0.5px 0.8px 2px 0.2px gray;
+            border-radius: 5px;
+            background-color: #fff;
+            overflow: hidden;
+            height: 37px;
+        }
+
+        .search-icon {
+            margin-left: 10px;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            border: none;
+            padding: 10px;
+            outline: none;
+            margin-left: 5px;
+            background-color: transparent;
+        }
+
+        /* Filters Styling */
+        .filter-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .filter-tags ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .filter-btn, .export-btn {
+            height: 45px;
+            border-radius: 9px;
+            border: none;
+            background-color: white;
+            margin-left: 15px;
+            cursor: pointer;
+            box-shadow: 0.2px 0.5px 1.2px 0.2px gray;
+            padding: 0 15px;
+        }
+
+        /* Candidates List Design */
+        .info {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .info p {
+            margin-right: 70px;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Candidates table design */
+        .candidates-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .candidates-table th, .candidates-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .candidates-table th {
+            background-color: #f4f6f9;
+            font-weight: 600;
+        }
+
+        .candidates-table tbody tr {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .candidates-table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .status {
+            padding: 4px 12px;
+            border-radius: 5px;
+            width: 79px;
+            height: 32px;
+            font-size: 14px;
+        }
+
+        .pending { background-color: #FBF5E8; color: #DBAD43; border: 1px solid #DBAD43; }
+        .approved { background-color: #E6F5EE; color: #3EAF7B; border: 1px solid #3EAF7B; }
+        .rejected { background-color: #FDF4F4; color: #E26666; border: 1px solid #E26666; }
+
+        .candidates-table button {
+            border: none;
+            background-color: transparent;
+            font-weight: bolder;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+
+        /* Candidate Details */
+        .candidate-details {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 320px;
+            max-height: calc(100vh - 40px);
+            background-color: #e0e3e7;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .candidate-details.visible {
+            transform: translateX(0);
+            display: block;
+        }
+
+        .candidate-details-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .candidate-details-heading h3 {
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .close-btn {
+            background-color: #333;
+            color: white;
+            border-radius: 50%;
+            height: 25px;
+            width: 25px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .close-btn:hover {
+            background-color: #555;
+        }
+
+        /* Candidates Info Design */
+        .candidate-details-info {
+            background-color: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .role {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .role h4 {
+            margin: 0 0 3px 0;
+            font-size: 16px;
+        }
+
+        .role p {
+            margin: 0;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .data {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .candidate-email-phone, .candidate-phone-email {
+            display: flex;
+            align-items: center;
+        }
+
+        .img-styling {
+            margin-right: 8px;
+        }
+
+        .img-styling i {
+            font-size: 12px;
+        }
+
+        .email, .phone-no {
+            font-size: 10px;
+        }
+
+        .email p, .phone-no p {
+            margin: 0 0 3px 0;
+            color: #666;
+            font-size: 10px;
+        }
+
+        .full-details {
+            margin: 0;
+            color: #333;
+            font-weight: 500;
+            font-size: 10px;
+        }
+
+        /* Application Details with Circles */
+        .candidate-review-result {
+            background-color: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .candidate-review-result h4 {
+            margin: 0 0 15px 0;
+            font-size: 14px;
+        }
+
+        .progress-container {
+            position: relative;
+        }
+
+        .progress-line {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            width: 2px;
+            height: calc(100% - 30px);
+            background-color: #ddd;
+            z-index: 1;
+        }
+
+        .progress-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .step-circle.completed {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .step-circle.under-review {
+            background-color: #ffc107;
+            color: #333;
+        }
+
+        .step-circle.pending {
+            background-color: #e9ecef;
+            color: #666;
+            border: 2px solid #ddd;
+        }
+
+        .step-content h5 {
+            margin: 0 0 3px 0;
+            font-size: 12px;
+        }
+
+        .step-content .date {
+            font-size: 10px;
+            color: #666;
+            margin: 0;
+        }
+
+        .step-content .status-badge {
+            display: inline-block;
+            background-color: #FBF5E8;
+            color: #DBAD43;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 9px;
+            margin-top: 3px;
+        }
+
+        /* Links and Documents */
+        .candidate-details-links {
+            background-color: white;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .candidate-details-links h4 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+        }
+
+        .candidate-review-results {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .candidate-review-results a {
+            text-decoration: none;
+            color: #1690c0;
+            font-size: 12px;
+        }
+
+        .candidate-review-results a:hover {
+            color: #08394d;
+        }
+
+        .candidate-review-results i {
+            font-size: 10px;
+            margin-right: 5px;
+        }
+
+        .candidate-details-documents {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .candidate-details-documents p {
+            margin: 0;
+            font-size: 12px;
+        }
+
+        .candidate-details-documents i {
+            font-size: 12px;
+        }

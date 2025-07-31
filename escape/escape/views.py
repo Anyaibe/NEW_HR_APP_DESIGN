@@ -8,3 +8,9 @@ def employee_directory(request):
 
 def leave_directory(request):
     return render(request, "leave_directory.html")
+
+def candidates(request):
+    return render(request, "candidates.html")
+
+def jobs(request):
+    return render(request, "jobs.html")

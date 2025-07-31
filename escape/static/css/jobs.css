@@ -1,0 +1,266 @@
+/* General layout */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f9;
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar styles */
+.sidebar {
+    background-color: #fff;
+    width: 220px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.logo h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 40px;
+}
+
+.nav-links li {
+    margin-bottom: 20px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 16px;
+    padding: 10px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.nav-links li a.active {
+    background-color: #e3efff;
+    border-radius: 8px;
+    color: #007bff;
+}
+
+.nav-links li a:hover {
+    background-color: #ececec;
+    border-radius: 8px;
+}
+
+/* Main content styles */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+header input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 200px;
+}
+
+/* Recruitment styles */
+.job-container{
+    margin-top: 2em;
+    padding: 1em;
+    background-color: #fefefe;
+    border-radius: 9px;
+    margin-left: 6em;
+}
+
+/* Search bar styling */
+.search-icon{
+    margin-left:15px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    width: 250px;
+    position: relative;
+    box-shadow: 0.5px 0.8px 2px 0.2px gray;
+    border-radius: 5px;
+    background-color: #fff;
+    overflow: hidden;
+    height: 40px;
+}
+
+/* Icon styling */
+.search-icon {
+    margin-left: 10px;
+}
+
+/* Input styling */
+.search-bar {
+    flex-grow: 1;
+    border: none;
+    padding: 10px;
+    outline: none;
+    margin-left: 5px;
+    background-color: transparent;
+}
+
+/* Button and Search-bar placement */
+.Filter-section{
+    display: flex;
+}
+
+/* Button Styling */
+.filter-tags{
+    list-style: none;
+    display: flex;
+    margin-top: .5em;
+    margin-left: 242px;
+}
+
+/* Location and experience buttons styling */
+.sort-btn{
+    width: 118px;
+    height: 32px;
+    border-radius: 9px;
+    border: none;
+    background-color: white;
+    margin-right: 10px;
+    margin-top: -.4em;
+    cursor: pointer;
+    box-shadow: 0.2px 0.5px 1.2px 0.2px gray;
+}
+
+.filter-btn{
+    width: 109px;
+    height: 52px;
+    border-radius: 9px;
+    border: none;
+    background-color: white;
+    margin-right: 10px;
+    margin-top: -20px;
+    cursor: pointer;
+    box-shadow: 0.2px 0.5px 1.2px 0.2px gray;
+}
+
+.add-btn{
+    width: 167px;
+    height: 45px;
+    border-radius: 9px;
+    border: none;
+    background-color: #0585B8;
+    margin-right: 10px;
+    margin-top: -13px;
+    color: white;
+    cursor: pointer;
+    font-family: Urbanist;
+}
+
+/* Cards section */
+/* .job-cards{
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+} */
+
+.card-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+hr{
+    margin: 20px -17px 16px;
+    border: 0;
+    height: 2px;
+    border-top: 1px solid #c9c7c7;
+}
+
+.card-closed{
+    background-color: #fefefe;
+    border-radius: 10px;
+    border: none;
+    width: 300px;
+    padding: 0.5em;
+    margin-top: 10px;
+    border-left:  4px red solid !important;
+}
+
+.card-opened{
+    background-color: #fefefe;
+    border-radius: 10px;
+    border: none;
+    width: 300px;
+    padding: 0.5em;
+    margin-top: 10px;
+    border-left:  4px #0585B8 solid !important;
+}
+
+h2{
+    font-size: 15px;
+}
+
+p{
+    color: gray;
+    font-size: 12px;
+    margin-top: -5px;
+    margin-bottom: 25px;
+}
+
+.card-closed button{
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.card-opened button{
+    background-color: #0585B8;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+span{
+    font-size: 12px;
+}
+
+.cls-tag{
+    /* text-align: right; */
+    margin-top: -40px;
+    margin-left: 200px;
+    color: red;
+}
+
+.cls-tag-opened{
+    margin-top: -40px;
+    margin-left: 200px;
+    color: green;
+}
+/* .search-join{
+    flex-direction: row;
+    box-shadow: 0.5px 0.8px 2px 0.2px gray; 
+    height:35px;
+    align-items: center;
+    justify-content: center space-around;
+    display:flex;
+    width: 300px;
+    flex-wrap: nowrap;
+
+    border-radius: 5px;
+} */
