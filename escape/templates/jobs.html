@@ -83,6 +83,80 @@
                 <hr>
             </div>
         </div>
+
+        <!-- Add Job Modal -->
+<div id="add-job-modal" class="modal hidden">
+    <form class="addJobModal" id="add-job-form">
+        <p class="Header-links">
+            <a href="{% url 'jobs' %}" class="jobs-link">Jobs</a>
+            <span class="arrow"> > </span>
+            <a href="#" class="add-job">Add Job</a>
+        </p>
+
+        <div class="modal-title">
+            <i>💼</i>
+            <span>Add New Job</span>
+        </div>
+        
+        <hr>
+
+        <!-- Job Information Form -->
+        <div class="job-form-section">
+            <!-- Position and Dates -->
+            <div class="input-row">
+                <input type="text" placeholder="Position" class="input-third" name="position" required>
+                <input type="date" placeholder="Starting Date" class="input-third" name="startingDate" required>
+                <input type="date" placeholder="End Date" class="input-third" name="endDate" required>
+            </div>
+
+            <!-- Vacancies, Experience, Employment Type -->
+            <div class="input-row">
+                <input type="number" placeholder="Number of Vacancies" class="input-third" name="vacancies" min="1" required>
+                <input type="text" placeholder="Years in Experience Required" class="input-third" name="experience" required>
+                <select class="input-third" name="employmentType" required>
+                    <option disabled selected>Employment Type(Full, Part, Contract)</option>
+                    <option value="Full-Time">Full-Time</option>
+                    <option value="Part-Time">Part-Time</option>
+                    <option value="Contract">Contract</option>
+                    <option value="Internship">Internship</option>
+                </select>
+            </div>
+
+            <!-- Job Description Upload -->
+            <div class="file-upload-container">
+                <div class="file-upload-box" id="file-upload-box">
+                    <label for="job-description-file" class="file-upload-placeholder">📄</label>
+                    <input type="file" id="job-description-file" name="jobDescription" style="display: none;" accept=".pdf,.doc,.docx,.txt">
+                </div>
+                <div class="file-upload-text">
+                    <strong>Upload Job Description</strong><br>
+                    <small>Click to upload a file (PDF, DOC, DOCX, TXT)</small><br>
+                    <span id="file-name" style="color: #0585B8; font-weight: 500;"></span>
+                </div>
+            </div>
+
+            <!-- Address -->
+            <input type="text" class="input-full" placeholder="Address" name="address" required>
+
+            <!-- City and State -->
+            <div class="input-row">
+                <input type="text" placeholder="City" class="input-half" name="city" required>
+                <select class="input-half" name="state" required>
+                    <option disabled selected>State</option>
+                    <option value="Lagos">Lagos</option>
+                    <option value="Abuja">Abuja (FCT)</option>
+                    <!-- Add more states as needed -->
+                </select>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="btn-container">
+                <button type="button" class="cls-btn close-modal">Cancel</button>
+                <button type="submit" class="save-btn">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
     </div>
 {% endblock %}
 
