@@ -6,10 +6,10 @@ function toggleDropdown(dropdownId) {
     // Only toggle if we're manually clicking, not if it's already shown due to active state
     if (!menu.classList.contains('show')) {
         menu.classList.add('show');
-        arrow.classList.add('rotated');
+        if (arrow) arrow.classList.add('rotated');
     } else {
         menu.classList.remove('show');
-        arrow.classList.remove('rotated');
+        if (arrow) arrow.classList.remove('rotated');
     }
     
     console.log(`Dropdown ${dropdownId} toggled. Classes:`, menu.className);
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isOnEmployeePage && employeeDropbtn) {
             employeeDropdown.classList.add('show');
             employeeDropbtn.classList.add('active');
-            employeeArrow.classList.add('rotated');
+            if (employeeArrow) employeeArrow.classList.add('rotated');
         }
     }
 
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isOnRecruitmentPage && recruitmentDropbtn) {
             recruitmentDropdown.classList.add('show');
             recruitmentDropbtn.classList.add('active');
-            recruitmentArrow.classList.add('rotated');
+            if (recruitmentArrow) recruitmentArrow.classList.add('rotated');
         }
     }
 
@@ -77,8 +77,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     dropdown.classList.remove('show');
                     // Also rotate back the arrow
                     const otherButton = document.querySelector(`[onclick*="${dropdown.id}"]`);
-                    const otherArrow = otherButton.querySelector('.dropdown-arrow');
-                    otherArrow.classList.remove('rotated');
+                    if (otherButton) {
+                        const otherArrow = otherButton.querySelector('.dropdown-arrow');
+                        if (otherArrow) otherArrow.classList.remove('rotated');
+                    }
                 }
             });
         });

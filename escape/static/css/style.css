@@ -37,104 +37,121 @@ header input {
 .logo h2 {
     font-size: 24px;
     color: #333;
+    margin: 0 0 40px 0;
 }
 
 .nav-links {
     list-style: none;
     padding: 0;
-    margin-top: 40px;
+    margin: 0;
 }
 
-.nav-links li {
-    margin-bottom: 20px;
+.nav-links > li {
+    margin-bottom: 0; /* Remove default margins */
 }
 
-.nav-links li a {
+.nav-links li a, .nav-links .nav-item {
     text-decoration: none;
     color: #555;
     font-size: 16px;
-    padding: 10px;
+    padding: 12px 15px;
     display: block;
     transition: background-color 0.3s;
+    margin-bottom: 8px;
+    border-radius: 8px;
 }
 
-.nav-links li a.active {
+.nav-links li a.active, .nav-links .nav-item.active {
     background-color: #e3efff;
-    border-radius: 8px;
     color: #007bff;
 }
 
-.nav-links li a:hover {
+.nav-links li a:hover, .nav-links .nav-item:hover {
     background-color: #ececec;
-    border-radius: 8px;
 }
 
-/* Base dropdown styles */
-.dropdown {
-    position: relative;
-}
-
-/* Updated dropdown styles for your style.css file */
-
-/* Base dropdown styles */
-.dropdown {
-    position: relative;
+/* Dropdown styles - COMPLETELY REWRITTEN */
+.dropdown-container {
+    margin-bottom: 8px;
 }
 
 .dropbtn {
     cursor: pointer;
     display: block;
-    padding: 10px 15px;
+    padding: 12px 15px;
     color: #555;
     text-decoration: none;
     border-radius: 8px;
     transition: background-color 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 16px;
+    text-align: left;
+    position: relative;
 }
 
-/* Style for active dropdown button when any child link is active */
 .dropbtn.active {
     background-color: #e3efff;
     color: #007bff;
 }
 
-/* Hover effect for dropdown button */
 .dropbtn:hover {
     background-color: #ececec;
 }
 
-/* Dropdown content - hidden by default */
+/* Dropdown arrow */
+.dropdown-arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+    font-size: 12px;
+}
+
+.dropdown-arrow.rotated {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Dropdown content */
 .dropdown-content {
     display: none;
-    flex-direction: column;
-    padding-left: 15px;
-    margin-top: 5px;
-    overflow: hidden;
-    transition: all 0.3s ease;
+    background-color: transparent;
+    margin-bottom: 8px;
 }
 
-/* Show dropdown content when expanded */
 .dropdown-content.show {
-    display: flex;
+    display: block;
 }
 
-/* Style for dropdown links */
 .dropdown-content a {
-    padding: 8px 15px;
+    padding: 8px 30px;
     display: block;
     color: #555;
     text-decoration: none;
     border-radius: 6px;
     transition: background-color 0.3s;
+    margin-bottom: 4px;
+    font-size: 15px;
 }
 
-/* Style for active links in dropdown */
+.dropdown-content a:last-child {
+    margin-bottom: 8px;
+}
+
 .dropdown-content a.active {
     background-color: #e3efff;
     color: #007bff;
 }
 
-/* Hover effect for dropdown links */
 .dropdown-content a:hover {
     background-color: #ececec;
 }
 
+.main-content {
+    flex: 1;
+    padding: 20px;
+}

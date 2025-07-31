@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Django App{% endblock %}</title>
+    <title>{% block title %}Dashboard{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'js/layout.js' %}" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <header>
+<header>
         <h1>Hello, Welcome</h1>
         <input type="search" placeholder="Search..." />
     </header>
@@ -21,22 +21,44 @@
             <div class="logo">
                 <h2>Dashboard</h2>
             </div>
-            <ul class="nav-links">
-                <li><a href="{% url 'dashboard' %}" class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">Dashboard</a></li>
+            <nav class="nav-links">
+                <!-- Dashboard Link -->
+                <li>
+                    <a href="{% url 'dashboard' %}" class="nav-item {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">Dashboard</a>
+                </li>
 
-                <li class="dropdown">
-                    <span class="dropbtn {% if request.resolver_match.url_name == 'employee_directory' or request.resolver_match.url_name == 'leave_directory' %}active{% endif %}" onclick="toggleDropdown()">Employees</span>
+                <!-- Employees Dropdown -->
+                <div class="dropdown-container">
+                    <button class="dropbtn {% if request.resolver_match.url_name == 'employee_directory' or request.resolver_match.url_name == 'leave_directory' %}active{% endif %}" onclick="toggleDropdown('employeeDropdown')">
+                        Employees
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
                     <div class="dropdown-content {% if request.resolver_match.url_name == 'employee_directory' or request.resolver_match.url_name == 'leave_directory' %}show{% endif %}" id="employeeDropdown">
                         <a href="{% url 'employee_directory' %}" class="{% if request.resolver_match.url_name == 'employee_directory' %}active{% endif %}">Employee Directory</a>
                         <a href="{% url 'leave_directory' %}" class="{% if request.resolver_match.url_name == 'leave_directory' %}active{% endif %}">Leave Request</a>
                     </div>
+                </div>
+
+                <!-- Recruitment Dropdown -->
+                <div class="dropdown-container">
+                    <button class="dropbtn {% if request.resolver_match.url_name == 'candidates' or request.resolver_match.url_name == 'jobs' %}active{% endif %}" onclick="toggleDropdown('recruitmentDropdown')">
+                        Recruitment
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="dropdown-content {% if request.resolver_match.url_name == 'candidates' or request.resolver_match.url_name == 'jobs' %}show{% endif %}" id="recruitmentDropdown">
+                        <a href="{% url 'candidates' %}" class="{% if request.resolver_match.url_name == 'candidates' %}active{% endif %}">Candidates</a>
+                        <a href="{% url 'jobs' %}" class="{% if request.resolver_match.url_name == 'jobs' %}active{% endif %}">Jobs</a>
+                    </div>
+                </div>
+
+                <!-- Other Navigation Items -->
+                <li>
+                    <a href="#" class="nav-item">Hub</a>
                 </li>
-
-
-                <li><a href="#" class="{% if request.resolver_match.url_name == 'recruitment' %}active{% endif %}">Recruitment</a></li>
-                <li><a href="#">Hub</a></li>
-                <li><a href="#">Settings</a></li>
-            </ul>
+                <li>
+                    <a href="#" class="nav-item">Settings</a>
+                </li>
+            </nav>
         </div>
 
         <main class="main-content">
