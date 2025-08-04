@@ -82,7 +82,7 @@ header input {
     padding: 1em;
     background-color: #fefefe;
     border-radius: 9px;
-    margin-left: 6em;
+    margin-left: 1em;
 }
 
 /* Search bar styling */
@@ -127,7 +127,7 @@ header input {
     list-style: none;
     display: flex;
     margin-top: .5em;
-    margin-left: 370px;
+    margin-left: 28.125rem;
 }
 
 /* Location and experience buttons styling */
