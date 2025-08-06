@@ -9,103 +9,138 @@
 
 {% block content %}
     <!-- Main Content -->
-        <div class="main-content">
-            <!-- Dashboard Section -->
-            <div id="dashboard-section" class="content-section">
-                
-
-                <!-- Stats Cards -->
-                <section class="stats-cards">
-                    <div class="card">
-                        <h3>Employees On Leave</h3>
-                        <p>5/80</p>
-                    </div>
-                    <div class="card">
-                        <h3>Pending Requests</h3>
-                        <p>10</p>
-                    </div>
-                    <div class="card">
-                        <h3>Open Positions</h3>
-                        <p>2</p>
-                    </div>
-                    <div class="card">
-                        <h3>Pending Applications</h3>
-                        <p>5</p>
-                    </div>
-                </section>
-
-                <!-- Leave Applications Chart -->
-                <section class="chart-section">
-                    <h2>Leave Applications</h2>
-                    <canvas id="leaveChart"></canvas>
-                </section>
-
-                <!-- Recent Activity Section -->
-                <section class="recent-activity">
-                    <h2>Recent</h2>
-                    <!-- Tab Navigation -->
-                    <div class="tabs">
-                        <button class="tab-button" onclick="openTab(event, 'requestTab')">Request</button>
-                        <button class="tab-button" onclick="openTab(event, 'jobTab')">Job</button>
-                    </div>
-
-                    <!-- Request Tab Content -->
-                    <div id="requestTab" class="tab-content active">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Candidate Name</th>
-                                    <th>Applied Role</th>
-                                    <th>Resume Rating</th>
-                                    <th>Stage</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>13/01</td>
-                                    <td>Aisha Doe</td>
-                                    <td>Sr. UX Designer</td>
-                                    <td>4</td>
-                                    <td>Review</td>
-                                    <td><span class="pending">Pending</span></td>
-                                    <td>...</td>
-                                </tr>
-                                <!-- More rows here -->
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- Job Tab Content -->
-                    <div id="jobTab" class="tab-content">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Job Title</th>
-                                    <th>Department</th>
-                                    <th>Location</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>13/01</td>
-                                    <td>Project Manager</td>
-                                    <td>Operations</td>
-                                    <td>New York</td>
-                                    <td><span class="approved">Approved</span></td>
-                                    <td>...</td>
-                                </tr>
-                                <!-- More rows here -->
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
+    <div class="main-content">
+        <!-- Stats Cards -->
+        <section class="stats-cards">
+            <div class="card">
+                <h3>Employees On Leave</h3>
+                <p>5/80</p>
             </div>
+            <div class="card">
+                <h3>Pending Requests</h3>
+                <p>10</p>
+            </div>
+            <div class="card">
+                <h3>Open Positions</h3>
+                <p>2</p>
+            </div>
+            <div class="card">
+                <h3>Pending Applications</h3>
+                <p>5</p>
+            </div>
+        </section>
+
+        <!-- Leave Applications Chart -->
+        <section class="chart-section">
+            <h2>Leave Applications</h2>
+            <canvas id="leaveChart" width="400" height="200"></canvas>
+        </section>
+
+        <!-- Recent Activity Section with Updated Tabs -->
+        <section class="recent-activity">
+            <h2>Recent</h2>
+            
+            <!-- ✅ UPDATED TAB NAVIGATION - matches candidates page style -->
+            <div class="dashboard-tabs">
+                <div class="tab-info">
+                    <button class="tab-btn active" data-tab="request">Request</button>
+                    <button class="tab-btn" data-tab="job">Job</button>
+                </div>
+
+                <!-- Request Tab Content -->
+                <div id="request" class="tab-content active">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Employee</th>
+                                <th>Leave Type</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>13/01</td>
+                                <td>Aisha Doe</td>
+                                <td>Sick Leave</td>
+                                <td>14/03</td>
+                                <td>30/03</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td><button class="action-btn">⋯</button></td>
+                            </tr>
+                            <tr>
+                                <td>13/01</td>
+                                <td>Chukwuemeka</td>
+                                <td>Annual Leave</td>
+                                <td>14/05</td>
+                                <td>20/05</td>
+                                <td><span class="status approved">Approved</span></td>
+                                <td><button class="action-btn">⋯</button></td>
+                            </tr>
+                            <tr>
+                                <td>13/01</td>
+                                <td>Suleiman</td>
+                                <td>Compassionate Leave</td>
+                                <td>12/02</td>
+                                <td>15/02</td>
+                                <td><span class="status rejected">Rejected</span></td>
+                                <td><button class="action-btn">⋯</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Job Tab Content -->
+                <div id="job" class="tab-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Candidate Name</th>
+                                <th>Applied Role</th>
+                                <th>Resume Rating</th>
+                                <th>Stage</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>13/01</td>
+                                <td>Aisha Doe</td>
+                                <td>Sr. UX Designer</td>
+                                <td>4</td>
+                                <td>Review</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td><button class="action-btn">⋯</button></td>
+                            </tr>
+                            <tr>
+                                <td>13/01</td>
+                                <td>Chukwuemeka</td>
+                                <td>Sr. UX Designer</td>
+                                <td>4</td>
+                                <td>Review</td>
+                                <td><span class="status approved">Approved</span></td>
+                                <td><button class="action-btn">⋯</button></td>
+                            </tr>
+                            <tr>
+                                <td>13/01</td>
+                                <td>Suleiman</td>
+                                <td>Sr. UX Designer</td>
+                                <td>4</td>
+                                <td>Review</td>
+                                <td><span class="status rejected">Rejected</span></td>
+                                <td><button class="action-btn">⋯</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
 {% endblock %}
 
 {% block extra_js %}
