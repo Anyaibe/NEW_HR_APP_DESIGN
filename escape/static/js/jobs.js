@@ -3,11 +3,68 @@ document.addEventListener('DOMContentLoaded', function() {
     const addJobBtn = Array.from(document.querySelectorAll('.add-btn')).find(btn => 
         btn.textContent.includes('Add new Job')
     );
+    
+    // Get clickable job cards and sections
+    const jobCards = document.querySelectorAll('.clickable-div');
+    const jobDetailSection = document.querySelector('.job-details');
+    const jobSection = document.getElementById('job-directory-section');
     const modal = document.getElementById('add-job-modal');
     const form = document.getElementById('add-job-form');
     const fileInput = document.getElementById('job-description-file');
     const fileUploadBox = document.getElementById('file-upload-box');
     const fileName = document.getElementById('file-name');
+
+    // Handle Job Card Click to show Job Details Section
+    jobCards.forEach(card => {
+        card.addEventListener('click', function (e){
+            e.stopPropagation();
+
+            const role = card.getAttribute("data-role");
+            const location = card.getAttribute("data-location");
+            const experience = card.getAttribute("data-exp"); // Fixed: was "data-experience"
+            const jobImage = card.getAttribute('data-image') || '/static/images/avatar.svg';
+
+            // Update Job Details Header
+            updateJobDetailsHeader(role, location, experience, jobImage);
+
+            // Switch to Job Details View
+            switchToJobDetails();
+        });
+    });
+
+    function updateJobDetailsHeader(role, location, experience, jobImage){
+        const jobRoleElement = document.getElementById("job-name");
+        const jobLocationElement = document.getElementById("job-location"); // Fixed typo
+        const jobExperienceElement = document.getElementById("job-experience");
+        const jobImageElement = document.getElementById('job-image');
+
+        if (jobRoleElement) jobRoleElement.textContent = role || 'N/A'; // Fixed variable names
+        if (jobLocationElement) jobLocationElement.textContent = location || 'N/A';
+        if (jobExperienceElement) jobExperienceElement.textContent = experience || 'N/A';
+        if (jobImageElement) jobImageElement.src = jobImage;
+    }
+    
+    function switchToJobDetails(){
+        if (jobSection) jobSection.classList.add('hidden');
+        if (jobDetailSection) jobDetailSection.classList.remove('hidden');
+    }
+
+    // Add back button functionality to job details (you'll need to add this button to your HTML)
+    const backToJobsBtn = document.getElementById('back-to-jobs');
+    if (backToJobsBtn) {
+        backToJobsBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showJobDirectory();
+        });
+    }
+
+    function showJobDirectory() {
+        if (jobDetailSection) jobDetailSection.classList.add('hidden');
+        if (jobSection) jobSection.classList.remove('hidden');
+    }
+
+    // Make showJobDirectory available globally in case you need it elsewhere
+    window.showJobDirectory = showJobDirectory;
 
     // Open modal when "Add new Job" button is clicked
     if (addJobBtn && modal) {
@@ -94,5 +151,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    console.log('✅ Add Job modal functionality loaded');
+    console.log('✅ Add Job modal and job details functionality loaded');
 });

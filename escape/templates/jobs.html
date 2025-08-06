@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="job-container">
+    <div id="job-directory-section" class="job-container">
             <div class="Filter-section">
                 <div class="search-container">
                     <img src="{% static 'images/search.svg' %}" alt="Search Icon" class="search-icon">
@@ -32,7 +32,11 @@
                         <p class="cls-tag">closed</p>
                     </div>
     
-                    <div class="card-opened">
+                    <div class="card-opened clickable-div"
+                    data-role="Growth Manager"
+                    data-location="Remote"
+                    data-exp="3months exp+"
+                    data-image="{% static 'images/avatar.svg' %}">
                         <h2>Growth Manager</h2>
                         <p>Posted 5 days ago</p>
                         <button>Remote</button>
@@ -83,6 +87,46 @@
                 <hr>
             </div>
         </div>
+
+<!-- Enhanced Job Details Section -->
+        <section class="job-details hidden">
+            <div class="job-details-header">
+                <div class="job-details-content">
+                    <div class="profile-picture">
+                        <img id="job-image" src="{% static 'images/avatar.svg' %}" alt="Job Description Picture">
+                    </div>
+
+                    <div class="job-info">
+                        <h2 id="job-name">Job Name</h2>
+                        <div class="job-requirements">
+                            <p><i class="fas fa-map-marker-alt"></i> <span id="job-location">Location</span></p>
+                            <p><i class="fas fa-briefcase"></i> <span id="job-experience">Experience</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Job Details Content -->
+            <div class="job-details-body">
+                <!-- You can add more job details here like description, requirements, etc. -->
+                <div class="job-description">
+                    <h3>Job Description</h3>
+                    <p>Job description will be loaded here...</p>
+                </div>
+                
+                <div class="job-requirements-detail">
+                    <h3>Requirements</h3>
+                    <p>Job requirements will be loaded here...</p>
+                </div>
+            </div>
+
+            <!-- Back Button -->
+            <div class="job-details-footer">
+                <button id="back-to-jobs" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Jobs
+                </button>
+            </div>
+        </section>
 
         <!-- Add Job Modal -->
 <div id="add-job-modal" class="modal hidden">
