@@ -72,12 +72,18 @@
 }
 
 .filter-btn, .export-btn {
-    padding: 10px;
+    height: 45px;
+    border-radius: 9px;
     border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: white;
+    margin-left: 15px;
     cursor: pointer;
+    box-shadow: 0.2px 0.5px 1.2px 0.2px gray;
+    padding: 0 15px;
+}
+
+.filter-btn:hover, .export-btn:hover{
+    background-color: rgb(192, 189, 189);
 }
 
 .employee-table {
@@ -107,18 +113,30 @@
     color: #fff;
 }
 
-.full-time { background-color: #007bff; }
-.part-time { background-color: #ffb400; }
-.contract { background-color: #28a745; }
+.full-time { 
+    border: 1px solid #534FEB;
+    background-color: #eeedfd; 
+    color: #534FEB; 
+}
+.part-time { 
+    border: 1px solid #1C6CE5;
+    background-color: #e8f0fc; 
+    color: #1C6CE5;
+}
+.contract { 
+    border: 1px solid #534FEB;
+    background-color: #F6F6FE; 
+    color: #534FEB;
+}
 
 .status {
         padding: 5px 10px;
         border-radius: 5px;
 }
 
-.present { background-color: #28a745; color: #fff; }
-.on-leave { background-color: #ffc107; color: #fff; }
-.in-training { background-color: #17a2b8; color: #fff; }
+.present { border: 1px solid #069855; background-color: #E6F5EE; color: #069855; }
+.on-leave {border: 1px solid #D62525; background-color: #FDF4F4; color: #D62525; }
+.in-training { border: 1px solid #D39C1D; background-color: #FBF5E8; color: #D39C1D; }
 
 /* Pagination styles */
 .pagination {
@@ -133,10 +151,11 @@
     border: 1px solid #ddd;
     background-color: #f4f6f9;
     cursor: pointer;
+    border-radius: 4px;
 }
 
 .pagination-btn.active {
-    background-color: #007bff;
+    background-color: #5932EA;
     color: #fff;
 }
 
