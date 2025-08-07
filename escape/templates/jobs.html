@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% load static %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}Jobs{% endblock %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/jobs.css' %}">
@@ -15,9 +15,9 @@
                     <input type="search" class="search-bar" placeholder="Search by position, location">
                 </div>
             <ul class="filter-tags">
-                <li><button class="sort-btn">Sort by latest</button></li>
-                <li><button class="filter-btn">Filter</button></li>
-                <li> <button class="add-btn">Add new Job</button></li>
+                <li><button class="sort-btn">Sort by latest &nbsp;<i class="fa fas fa-caret-down"></i></button></li>
+                <li><button class="filter-btn">Filter &nbsp; <i class="fa-solid fa-arrow-down-wide-short"></i></button></li>
+                <li> <button class="add-btn">Add new Job &nbsp; <i class="fas fa-plus-circle"></i> </button></li>
             </ul>
 
             </div>

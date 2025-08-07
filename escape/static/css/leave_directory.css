@@ -3,6 +3,7 @@
     padding: 20px;
     background-color: white;
     margin-top: 20px;
+    border-radius: 18px;
 }
 
 .request-section h2 {
@@ -25,33 +26,58 @@
 }
 
 .filter-btn, .export-btn {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    height: 45px;
+    border-radius: 9px;
     border: none;
-    border-radius: 4px;
+    background-color: white;
+    margin-left: 15px;
     cursor: pointer;
+    box-shadow: 0.2px 0.5px 1.2px 0.2px gray;
+    padding: 0 15px;
 }
 
-.filter-btn:hover, .export-btn:hover {
-    background-color: #0056b3;
+.filter-btn:hover, .export-btn:hover{
+    background-color: rgb(192, 189, 189);
 }
 
 .tabs {
     margin-bottom: 20px;
     margin-left: 30px;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .tab-btn {
-    padding: 10px;
-    background-color: #f1f1f1;
+    margin-right: 60px;
+    margin-bottom: 0;
+    padding: 12px 0;
+    font-size: 14px;
+    color: #666;
+    background-color: transparent;
     border: none;
     cursor: pointer;
+    position: relative;
+    font-weight: normal;
+    transition: all 0.3s ease;
 }
 
 .tab-btn.active {
+    color: #000;
+    font-weight: bold;
+}
+
+/* Blue underline for active tab */
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 3px;
     background-color: #007bff;
-    color: white;
+    border-radius: 2px 2px 0 0;
+}
+.tab-btn:hover:not(.active) {
+    color: #333;
 }
 
 .tab-content {
@@ -68,6 +94,14 @@ table {
     border-collapse: collapse;
 }
 
+table thead{
+    background-color: #f4f6f9;
+    font-weight: 600;
+    color: #333;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
 table th, table td {
     padding: 15px;
     text-align: left;
@@ -76,33 +110,43 @@ table th, table td {
 
 .status {
     padding: 5px 10px;
-    border-radius: 4px;
+    border-radius: 8px;
     color: white;
-    font-weight: bold;
+    font-weight: light;
 }
 
 .status.pending {
-    background-color: #ffc107;
+    background-color: #FBF5E8; 
+    color: #DBAD43; 
+    border: 1px solid #DBAD43; 
 }
 
 .status.approved {
-    background-color: #28a745;
+    background-color: #E6F5EE; 
+    color: #3EAF7B; 
+    border: 1px solid #3EAF7B;
 }
 
 .status.rejected {
-    background-color: #dc3545;
+    background-color: #FDF4F4; 
+    color: #E26666; 
+    border: 1px solid #E26666;
 }
 
 .status.cancelled {
-    background-color: #6c757d;
+    background-color: #FDF4F4; 
+    color: #E26666; 
+    border: 1px solid #E26666;
 }
 
 .status.completed {
-    background-color: #17a2b8;
+    background-color: #E6F5EE; 
+    color: #3EAF7B; 
+    border: 1px solid #3EAF7B
 }
 
 .action-btn {
-    /* background-color: #007bff; */
+    background-color: transparent;
     color: black;
     border: none;
     padding: 5px 10px;

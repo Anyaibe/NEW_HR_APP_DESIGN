@@ -15,29 +15,56 @@
         .stats-cards {
             display: flex;
             gap: 20px;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
+        .stats-icon {
+            font-size: 28px;
+            color: #000;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
         .card {
             background-color: #fff;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: calc(25% - 20px);
             text-align: center;
+            height: 100px;
         }
-
-        .card h3 {
-            margin: 0 0 10px;
+        
+        .card-inner {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 15px;
+            text-align: left;
+            margin-top: 28px;
+        }
+        
+        .card .text h3 {
             font-size: 14px;
-            color: #666;
             font-weight: normal;
+            margin: 0;
+            color: #555;
+        }
+        
+        .card .text p {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 2px 0 0 0;
+            color: #000;
         }
 
-        .card p {
-            font-size: 24px;
-            font-weight: bold;
-            margin: 0;
+        /* Employees on Leave Span */
+        .leave-total-number{
+            color: gray;
+            font-size: 15.7px;
         }
 
         /* Chart section */

@@ -5,6 +5,7 @@
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/leave_directory.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
 {% endblock %}  
 
 {% block content %}
@@ -13,8 +14,8 @@
             <h2>Request</h2>
             <div class="filters">
                 <input type="text" placeholder="Search by name, leave type, or date...">
-                <button class="filter-btn">Filter</button>
-                <button class="export-btn">Export CSV</button>
+                <button class="filter-btn">Filter &nbsp; <i class="fa-solid fa-arrow-down-wide-short"></i></button>
+                <button class="export-btn">Export CSV &nbsp; <i class="fas fa-upload"></i></button>
             </div>
 
             <div class="tabs">
@@ -27,7 +28,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Data</th>
+                            <th>Date</th>
                             <th>Employee</th>
                             <th>Leave Type</th>
                             <th>From</th>
@@ -92,4 +93,5 @@
 {% comment %} Finished  {% endcomment %}
 {% block extra_js %}
     <script src="{% static 'js/leave_directory.js' %}" defer></script>
+    <script src="{% static 'js/all.min.js' %}" defer></script>
 {% endblock %}

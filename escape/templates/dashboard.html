@@ -13,20 +13,40 @@
         <!-- Stats Cards -->
         <section class="stats-cards">
             <div class="card">
-                <h3>Employees On Leave</h3>
-                <p>5/80</p>
+                <div class="card-inner">
+                    <img src="{% static 'images/user-group.svg' %}" alt="Employees on Leave" class="stats-icon">
+                    <div class="text">
+                        <h3>Employees on Leave</h3>
+                        <p>5/<span class="leave-total-number">80</span></p>
+                    </div>
+                </div>
             </div>
             <div class="card">
-                <h3>Pending Requests</h3>
-                <p>10</p>
+                <div class="card-inner">
+                    <img src="{% static 'images/clock-05.svg' %}" alt="On Leave" class="stats-icon">
+                    <div class="text">
+                        <h3>Pending Requests</h3>
+                        <p>10</p>
+                    </div>
+                </div>
             </div>
             <div class="card">
-                <h3>Open Positions</h3>
-                <p>2</p>
+                <div class="card-inner">
+                    <img src="{% static 'images/male 1.svg' %}" alt="Departments" class="stats-icon">
+                    <div class="text">
+                        <h3>Open Positions</h3>
+                        <p>2</p>
+                    </div>
+                </div>
             </div>
             <div class="card">
-                <h3>Pending Applications</h3>
-                <p>5</p>
+                <div class="card-inner">
+                    <img src="{% static 'images/user-add.svg' %}" alt="New Employee" class="stats-icon">
+                    <div class="text">
+                        <h3>Pending Applications</h3>
+                        <p>5</p>
+                    </div>
+                </div>
             </div>
         </section>
 
