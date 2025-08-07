@@ -237,7 +237,7 @@
 }
 
 .edit-profile {
-    background-color: #17a2b8;
+    background-color: #0585B8;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -251,7 +251,7 @@
 }
 
 .edit-profile:hover {
-    background-color: #138496;
+    background-color: #083269;
 }
 
 /* Profile Content Layout */
@@ -293,7 +293,7 @@
 }
 
 .profile-nav-btn.active {
-    background-color: #17a2b8;
+    background-color: #0585B8;
     color: white;
 }
 
@@ -487,27 +487,41 @@
 /* Leave Status Badges */
 .leave-status {
     padding: 4px 8px;
-    border-radius: 12px;
+    border-radius: 5px;
     font-size: 12px;
     font-weight: 500;
     text-transform: capitalize;
 }
 
 .leave-status.pending {
-    background-color: #fff3cd;
-    color: #856404;
+    background-color: #FBF5E8; 
+    color: #DBAD43; 
+    border: 1px solid #DBAD43;
 }
 
 .leave-status.approved {
-    background-color: #d4edda;
-    color: #155724;
+    background-color: #E6F5EE; 
+    color: #3EAF7B; 
+    border: 1px solid #3EAF7B; 
 }
 
 .leave-status.rejected {
-    background-color: #f8d7da;
-    color: #721c24;
+    background-color: #FDF4F4; 
+    color: #E26666; 
+    border: 1px solid #E26666;
 }
 
+/* Leave Buttons */
+.action-btn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.action-btn:hover{
+    background-color: #c6bbbb;
+}
 /* Profile Footer */
 .profile-footer {
     margin-top: 30px;
