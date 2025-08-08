@@ -90,41 +90,141 @@
 
 <!-- Enhanced Job Details Section -->
         <section class="job-details hidden">
-            <div class="job-details-header">
-                <div class="job-details-content">
-                    <div class="profile-picture">
-                        <img id="job-image" src="{% static 'images/avatar.svg' %}" alt="Job Description Picture">
-                    </div>
+            <p class="Header-links">
+                    <a href="{% url 'jobs' %}" class="{% if request.resolver_match.url_name == 'jobs' %}active{% endif %}">Jobs</a>
+                    <span class="arrow"> > </span>
+                    <a href="#" class="job_role">Project Manager</a>
+                </p>
+            <div class="job-details-container">
+                <div class="job-details-header">
+                    <div class="job-details-content">
+                        <div class="profile-picture">
+                            <img id="job-image" src="{% static 'images/avatar.svg' %}" alt="Job Description Picture">
+                        </div>
 
-                    <div class="job-info">
-                        <h2 id="job-name">Job Name</h2>
-                        <div class="job-requirements">
-                            <p><i class="fas fa-map-marker-alt"></i> <span id="job-location">Location</span></p>
-                            <p><i class="fas fa-briefcase"></i> <span id="job-experience">Experience</span></p>
+                        <div class="job-info">
+                            <h2 id="job-name">Job Name</h2>
+                            <div class="jobs_requirement_container">
+                                <div class="job-requirements">
+                                    <p><i class="fas fa-map-marker-alt"></i> <span id="job-location">Location</span></p>
+                                    <p><i class="fas fa-briefcase"></i> <span id="job-experience">Experience</span></p>
+                                </div>
+
+                                <div class="job-requirements">
+                                    <p><i class="fas fa-map-marker-alt"></i> <span>Location</span></p>
+                                </div>
+
+                                <button class="edit-job">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Job Details Content -->
-            <div class="job-details-body">
-                <!-- You can add more job details here like description, requirements, etc. -->
-                <div class="job-description">
-                    <h3>Job Description</h3>
-                    <p>Job description will be loaded here...</p>
-                </div>
                 
-                <div class="job-requirements-detail">
-                    <h3>Requirements</h3>
-                    <p>Job requirements will be loaded here...</p>
-                </div>
-            </div>
 
-            <!-- Back Button -->
-            <div class="job-details-footer">
-                <button id="back-to-jobs" class="back-btn">
-                    <i class="fas fa-arrow-left"></i> Back to Jobs
-                </button>
+                <!-- Job Details Content -->
+                <div class="job-details-body">
+                </div>
+
+                <div class="job-candidate-section">
+                    <div class="pipeline">
+                        <h3>Pipeline</h3>
+                        <div class="side-options">
+                            <div class="side-options-bar">
+                                <img src="{% static 'images/Vector.svg' %}" alt="Applied" class="stats-icon">
+                                <p>Applied</p>
+                            </div>
+
+                            <div class="side-options-bar">
+                                <img src="{% static 'images/down-arrow.svg' %}" alt="Shorlisted" class="stats-icon">
+                                <p>Shorlisted</p>
+                            </div>
+
+                            <div class="side-options-bar">
+                                <img src="{% static 'images/down-arrow.svg' %}" alt="First Conatact" class="stats-icon">
+                                <p>First Contact</p>
+                            </div>
+
+                            <div class="side-options-bar">
+                                <img src="{% static 'images/down-arrow.svg' %}" alt="Interview" class="stats-icon">
+                                <p>Interview</p>
+                            </div>
+
+                            <div class="side-options-bar">
+                                <img src="{% static 'images/down-arrow.svg' %}" alt="Review" class="stats-icon">
+                                <p>Review</p>
+                            </div>
+
+                            <div class="side-options-bar">
+                                <img src="{% static 'images/check mark-circle.svg' %}" alt="Hired" class="stats-icon">
+                                <p>Hired</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="job-candidate-table">
+                        <div class="job-candidate-table-details">
+                            <div class="job-header">
+                                <h3>Candidates</h3>
+                                <button class="sort">Sort by: latest &nbsp;<i class="fa fas fa-caret-down"></i></button>
+                            </div>
+
+                    <table class="candidates-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Candidate Name</th>
+                                <th>Applied Role</th>
+                                <th>Resume Rating</th>
+                                <th>Stage</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>13/01</td>
+                                <td>Aisha Doe</td>
+                                <td>Growth Manager</td>
+                                <td>4</td>
+                                <td>Review</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td><button>⋯</button></td>
+                            </tr>
+                            <tr>
+                                <td>13/01</td>
+                                <td>John Smith</td>
+                                <td>Growth Manager</td>
+                                <td>4</td>
+                                <td>Review</td>
+                                <td><span class="status approved">Approved</span></td>
+                                <td><button>⋯</button></td>
+                            </tr>
+                            <tr>
+                                <td>13/01</td>
+                                <td>Jane Wilson</td>
+                                <td>Growth Manager</td>
+                                <td>4</td>
+                                <td>Review</td>
+                                <td><span class="status rejected">Rejected</span></td>
+                                <td><button>⋯</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <!-- Back Button -->
+                <div class="job-details-footer">
+                    <button id="back-to-jobs" class="back-btn">
+                        <i class="fas fa-arrow-left"></i> Back to Jobs
+                    </button>
+                </div>
             </div>
         </section>
 

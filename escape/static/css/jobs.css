@@ -263,12 +263,13 @@ span{
 }
 
 /* Enhanced Job Details Styles */
-.job-details {
+.job-details-container {
     background-color: #fff;
     border-radius: 10px;
     padding: 25px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-left: 1em;
+    margin-top: 2em;
 }
 
 /* Job Details Header */
@@ -280,6 +281,16 @@ span{
     padding-bottom: 20px;
     border-bottom: 1px solid #e0e0e0;
 }
+
+.Header-links {
+    margin-top: 20px;
+    margin-left: 30px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.Header-links a { color: gray; text-decoration: none; }
+.Header-links .job_role { color: #071C50; }
 
 .job-details-content {
     display: flex;
@@ -312,6 +323,14 @@ span{
     font-weight: 600;
 }
 
+.jobs_requirement_container{
+    display: flex;
+}
+
+.job-requirements{
+    margin-right: 15px;
+}
+
 .job-requirements p {
     margin: 5px 0;
     color: #666;
@@ -324,6 +343,27 @@ span{
 .job-requirements i {
     width: 16px;
     color: #0585B8;
+}
+
+/* Job Edit Button */
+
+.edit-job {
+    background-color: #0585B8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    margin-left: 730px;
+}
+
+.edit-job:hover {
+    background-color: #083269;
 }
 
 /* Job Details Body */
@@ -351,12 +391,6 @@ span{
     color: #666;
     line-height: 1.6;
     margin-bottom: 15px;
-}
-
-/* Job Details Footer */
-.job-details-footer {
-    padding-top: 20px;
-    border-top: 1px solid #e0e0e0;
 }
 
 .back-btn {
@@ -536,4 +570,224 @@ span{
 
 .cls-btn {
     background-color: rgb(237, 236, 236);
+}
+
+/* Job Candidate Section Styling - FIXED VERSION */
+
+.job-candidate-section {
+    display: flex;
+    gap: 20px; /* Add proper spacing between sections */
+    width: 100%;
+}
+
+.pipeline {
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.side-options {
+    width: 242px;
+    background-color: white;
+    box-shadow: 0.2px 0.2px 1.2px 0.1px gray;
+    border: none;
+    border-radius: 10px;
+    padding: 15px; /* Increased padding for better spacing */
+}
+
+.side-options-bar {
+    display: flex;
+    align-items: center; /* Better vertical alignment */
+    margin-bottom: 15px; /* Add spacing between items */
+    padding: 10px;
+}
+
+.side-options-bar p {
+    margin: 0; /* Remove default margins */
+    margin-left: 10px;
+    font-size: 12px;
+    color: black;
+}
+
+.stats-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* FIXED: Job candidate table container */
+.job-candidate-table {
+    flex: 1; /* Take up remaining space */
+    padding: 20px;
+}
+
+/* FIXED: Job header with proper layout */
+.job-header {
+    display: flex;
+    justify-content: space-between; /* Space between title and button */
+    align-items: center; /* Vertical alignment */
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.job-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+/* FIXED: Sort button positioning and sizing */
+.sort {
+    min-width: 118px; /* Ensure minimum width */
+    width: auto; /* Allow width to adjust to content */
+    height: 32px;
+    border-radius: 9px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 0.2px 0.5px 1.2px 0.2px gray;
+    padding: 0 15px; /* Add horizontal padding */
+    font-size: 12px;
+    white-space: nowrap; /* Prevent text wrapping */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px; /* Remove all margins - positioning handled by flexbox */
+}
+
+.sort:hover {
+    background-color: #f8f9fa;
+}
+
+/* FIXED: Candidates table container */
+.job-candidate-table-details {
+    width: 100%;
+    overflow-x: auto; /* Handle horizontal overflow */
+}
+
+/* FIXED: Candidates table sizing */
+.candidates-table {
+    width: 100%; /* Changed from 110% to 100% */
+    border-collapse: collapse;
+    min-width: 600px; /* Ensure minimum width for readability */
+}
+
+.candidates-table thead tr {
+    background-color: #f4f6f9;
+}
+
+.candidates-table thead tr th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.candidates-table thead tr th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.candidates-table th, 
+.candidates-table td {
+    padding: 12px 8px; /* Reduced horizontal padding for better fit */
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    font-size: 14px;
+}
+
+.candidates-table th {
+    font-weight: 600;
+    color: #333;
+    background-color: #f4f6f9;
+}
+
+.candidates-table tbody tr {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.candidates-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* FIXED: Status styling with consistent sizing */
+.status {
+    padding: 6px 12px;
+    border-radius: 8px; /* More rounded for modern look */
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+    display: inline-block;
+    min-width: 70px;
+}
+
+.pending { 
+    background-color: #FBF5E8; 
+    color: #DBAD43; 
+    border: 1px solid #DBAD43; 
+}
+
+.approved { 
+    background-color: #E6F5EE; 
+    color: #3EAF7B; 
+    border: 1px solid #3EAF7B; 
+}
+
+.rejected { 
+    background-color: #FDF4F4; 
+    color: #E26666; 
+    border: 1px solid #E26666; 
+}
+
+.candidates-table button {
+    border: none;
+    background-color: transparent;
+    font-weight: bolder;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.candidates-table button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .job-candidate-section {
+        flex-direction: column;
+    }
+    
+    .side-options {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .side-options-bar {
+        flex: 1;
+        min-width: 150px;
+        justify-content: center;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .job-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .sort {
+        align-self: flex-end;
+    }
+    
+    .candidates-table {
+        font-size: 12px;
+    }
+    
+    .candidates-table th,
+    .candidates-table td {
+        padding: 8px 4px;
+    }
 }
