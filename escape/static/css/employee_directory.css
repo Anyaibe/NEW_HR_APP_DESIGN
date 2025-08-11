@@ -83,7 +83,7 @@
 }
 
 .filter-btn:hover, .export-btn:hover{
-    background-color: rgb(192, 189, 189);
+    background-color: #f8f9fa;
 }
 
 .employee-table {
@@ -520,7 +520,7 @@
 }
 
 .action-btn:hover{
-    background-color: #6c757d;
+    background-color: #f8f9fa;
 }
 /* Profile Footer */
 .profile-footer {

@@ -95,6 +95,10 @@ header input {
     box-shadow: 0.2px 0.5px 1.2px 0.2px gray;
 }
 
+.current-section button:hover{
+    background-color: #f8f9fa;
+}
+
 .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -197,6 +201,10 @@ header input {
     cursor: pointer;
     box-shadow: 0.2px 0.5px 1.2px 0.2px gray;
     padding: 0 15px;
+}
+
+.filter-btn:hover, .export-btn:hover{
+    background-color: #f8f9fa;
 }
 
 /* ✅ UPDATED TAB STYLING - matches your image */
@@ -325,6 +333,10 @@ header input {
     font-weight: bolder;
     cursor: pointer;
     padding: 5px 10px;
+}
+
+.candidates-table button:hover{
+    background-color: #f8f9fa;
 }
 
 /* Candidate Details */

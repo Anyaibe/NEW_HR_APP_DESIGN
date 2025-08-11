@@ -209,3 +209,6 @@
             padding: 5px 10px;
             font-size: 16px;
         }
+        .action-btn:hover{
+            background-color: #eff0f0;
+        }
