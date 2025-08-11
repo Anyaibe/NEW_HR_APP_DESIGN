@@ -659,7 +659,37 @@ span{
 /* FIXED: Candidates table container */
 .job-candidate-table-details {
     width: 100%;
-    overflow-x: auto; /* Handle horizontal overflow */
+    overflow-x: auto; 
+}
+
+/* Scroll Bar Settings */
+.job-candidate-table-container{
+    overflow-y: auto;
+    height: 500px;
+    scroll-snap-type: y mandatory;
+}
+
+.job-candidate-table-container table{
+    width: 100%;
+}
+
+/* If you want to target only your specific table container */
+.job-candidate-table-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.job-candidate-table-container::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 6px;
+}
+
+.job-candidate-table-container::-webkit-scrollbar-thumb {
+    background-color: #7152F3;
+    border-radius: 6px;
+}
+
+.job-candidate-table-container::-webkit-scrollbar-thumb:hover{
+    background-color: #543bb9;
 }
 
 /* FIXED: Candidates table sizing */
@@ -681,6 +711,10 @@ span{
     border-top-right-radius: 10px;
 }
 
+.candidates-table tr{
+    scroll-snap-align: start;
+}
+
 .candidates-table th, 
 .candidates-table td {
     padding: 12px 8px; /* Reduced horizontal padding for better fit */
@@ -693,6 +727,8 @@ span{
     font-weight: 600;
     color: #333;
     background-color: #f4f6f9;
+    position: sticky;
+    top: 0;
 }
 
 .candidates-table tbody tr {
