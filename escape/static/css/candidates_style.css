@@ -424,6 +424,25 @@ header input {
     display: block;
 }
 
+.candidate-details::-webkit-scrollbar {
+    width: 6px;
+    
+}
+
+.candidate-details::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 6px;
+}
+
+.candidate-details::-webkit-scrollbar-thumb {
+    background-color: #7152F3;
+    border-radius: 6px;
+}
+
+.candidate-details::-webkit-scrollbar-thumb:hover{
+    background-color: #543bb9;
+}
+
 .candidate-details-heading {
     display: flex;
     justify-content: space-between;
