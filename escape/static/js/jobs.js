@@ -21,35 +21,92 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const role = card.getAttribute("data-role");
             const location = card.getAttribute("data-location");
-            const experience = card.getAttribute("data-exp"); // Fixed: was "data-experience"
+            const experience = card.getAttribute("data-exp");
             const jobImage = card.getAttribute('data-image') || '/static/images/avatar.svg';
+            
+            // Determine if card is open or closed based on classes
+            const isOpen = card.classList.contains('card-opened');
+            const isClosed = card.classList.contains('card-closed');
 
             // Update Job Details Header
-            updateJobDetailsHeader(role, location, experience, jobImage);
+            updateJobDetailsHeader(role, location, experience, jobImage, isOpen, isClosed);
 
             // Switch to Job Details View
             switchToJobDetails();
         });
     });
 
-    function updateJobDetailsHeader(role, location, experience, jobImage){
-        const jobRoleElement = document.getElementById("job-name");
-        const jobLocationElement = document.getElementById("job-location"); // Fixed typo
-        const jobExperienceElement = document.getElementById("job-experience");
-        const jobImageElement = document.getElementById('job-image');
+function updateJobDetailsHeader(role, location, experience, jobImage, isOpen, isClosed){
+    const jobRoleElement = document.getElementById("job-name");
+    const jobLocationElement = document.getElementById("job-location");
+    const jobExperienceElement = document.getElementById("job-experience");
+    const jobImageElement = document.getElementById('job-image');
 
-        if (jobRoleElement) jobRoleElement.textContent = role || 'N/A'; // Fixed variable names
-        if (jobLocationElement) jobLocationElement.textContent = location || 'N/A';
-        if (jobExperienceElement) jobExperienceElement.textContent = experience || 'N/A';
-        if (jobImageElement) jobImageElement.src = jobImage;
+    if (jobRoleElement) jobRoleElement.textContent = role || 'N/A';
+    if (jobLocationElement) jobLocationElement.textContent = location || 'N/A';
+    if (jobExperienceElement) jobExperienceElement.textContent = experience || 'N/A';
+    if (jobImageElement) jobImageElement.src = jobImage;
+
+    // Find the second job-requirements div which contains the status
+    const jobRequirementsDivs = document.querySelectorAll('.job-requirements');
+    if (jobRequirementsDivs.length >= 2) {
+        const secondJobRequirementsDiv = jobRequirementsDivs[1];
+        
+        // Clear existing content and create proper structure
+        secondJobRequirementsDiv.innerHTML = '';
+        
+        // Create status container div
+        const statusContainer = document.createElement('div');
+        statusContainer.style.display = 'flex';
+        statusContainer.style.alignItems = 'center';
+        statusContainer.style.gap = '8px';
+        
+        // Create status image
+        const statusImage = document.createElement('img');
+        statusImage.src = '/static/images/status.svg';
+        statusImage.alt = 'status';
+        statusImage.style.width = '16px';
+        statusImage.style.height = '16px';
+        statusImage.style.flexShrink = '0';
+        
+        // Create status text
+        const statusText = document.createElement('span');
+        statusText.style.fontWeight = '500';
+        statusText.style.fontSize = '14px';
+        statusText.style.color = '#666';
+        
+        // Set status based on card type
+        if (isOpen) {
+            statusText.textContent = 'Open';
+            statusText.style.color = '#22c55e';
+        } else if (isClosed) {
+            statusText.textContent = 'Closed';
+            statusText.style.color = '#ef4444';
+        } else {
+            statusText.textContent = 'Open'; // Default
+            statusText.style.color = '#22c55e';
+        }
+        
+        // Add elements to container
+        statusContainer.appendChild(statusImage);
+        statusContainer.appendChild(statusText);
+        
+        // Add container to the job requirements div
+        secondJobRequirementsDiv.appendChild(statusContainer);
+        
+        // Apply proper styling to the parent div
+        secondJobRequirementsDiv.style.display = 'flex';
+        secondJobRequirementsDiv.style.flexDirection = 'column';
+        secondJobRequirementsDiv.style.gap = '8px';
     }
+}
     
     function switchToJobDetails(){
         if (jobSection) jobSection.classList.add('hidden');
         if (jobDetailSection) jobDetailSection.classList.remove('hidden');
     }
 
-    // Add back button functionality to job details (you'll need to add this button to your HTML)
+    // Add back button functionality to job details
     const backToJobsBtn = document.getElementById('back-to-jobs');
     if (backToJobsBtn) {
         backToJobsBtn.addEventListener('click', function(e) {

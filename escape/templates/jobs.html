@@ -88,7 +88,7 @@
             </div>
         </div>
 
-<!-- Enhanced Job Details Section -->
+        <!-- Enhanced Job Details Section -->
         <section class="job-details hidden">
             <p class="Header-links">
                     <a href="{% url 'jobs' %}" class="{% if request.resolver_match.url_name == 'jobs' %}active{% endif %}">Jobs</a>
@@ -101,7 +101,7 @@
                         <div class="profile-picture">
                             <img id="job-image" src="{% static 'images/avatar.svg' %}" alt="Job Description Picture">
                         </div>
-
+                    
                         <div class="job-info">
                             <h2 id="job-name">Job Name</h2>
                             <div class="jobs_requirement_container">
@@ -109,11 +109,12 @@
                                     <p><i class="fas fa-map-marker-alt"></i> <span id="job-location">Location</span></p>
                                     <p><i class="fas fa-briefcase"></i> <span id="job-experience">Experience</span></p>
                                 </div>
-
-                                <div class="job-requirements">
-                                    <p><i class="fas fa-map-marker-alt"></i> <span>Location</span></p>
+                            
+                                <div class="job-requirements open">
+                                    <img src="{% static "images/status.svg" %}" alt="status">
+                                    <p> <span>open</span></p>
                                 </div>
-
+                            
                                 <button class="edit-job">
                                     <i class="fas fa-edit"></i> Edit
                                 </button>
