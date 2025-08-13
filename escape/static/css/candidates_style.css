@@ -99,23 +99,71 @@ header input {
     background-color: #f8f9fa;
 }
 
+/* Fixed Viewport Card Container - Shows only 3 cards at a time */
 .card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    display: flex !important;
+    gap: 40px;
     margin-top: 20px;
+    
+    /* Fixed width to show exactly 3 cards */
+    width: 1150px; /* (350px card width + 25px gap) * 3 - 25px final gap */
+    max-width: 100%;
+    
+    /* Enable horizontal scrolling */
+    overflow-x: auto;
+    overflow-y: hidden;
+    
+    /* Styling */
+    padding: 10px 0;
+    scroll-behavior: smooth;
+    
+    /* Force scrollbar to always show */
+    scrollbar-gutter: stable;
 }
 
+/* Custom Scrollbar Styling for Card Container */
+.card-container::-webkit-scrollbar {
+    height: 6px; /* Make scrollbar more visible */
+}
+
+.card-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
+.card-container::-webkit-scrollbar-thumb {
+    background-color: #7152F3;
+    border-radius: 10px;
+    min-width: 50px; /* Minimum thumb width */
+}
+
+.card-container::-webkit-scrollbar-thumb:hover {
+    background-color: #543bb9;
+}
+
+/* Ensure cards maintain their exact width and don't shrink */
 .card-opened {
     background-color: #fefefe;
     border-radius: 10px;
     border: none;
-    width: 350px;
+    
+    /* Fixed dimensions */
+    width: 350px !important;
+    min-width: 350px !important;
+    max-width: 350px !important;
+    flex-shrink: 0 !important; /* Never shrink */
+    flex-grow: 0 !important; /* Never grow */
+    
     padding: 0.5em;
     margin-top: 10px;
     border-left: 4px #0585B8 solid !important;
+    
+    /* Ensure content doesn't break layout */
+    box-sizing: border-box;
 }
 
+/* Keep all other card styling exactly the same */
 .card-opened h2 {
     font-size: 15px;
 }
@@ -141,6 +189,19 @@ header input {
     margin-top: -40px;
     margin-left: 200px;
     color: green;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .card-container {
+        width: 775px; /* Show 2 cards on smaller screens */
+    }
+}
+
+@media (max-width: 800px) {
+    .card-container {
+        width: 375px; /* Show 1 card on mobile */
+    }
 }
 
 /* Candidates Table */
