@@ -1,0 +1,4 @@
+End Point for getting list of availiable jobs, name and location
+End Point for getting the job description for a particular job
+Post End Point for when candidates submits their information for a particular job
+End Point to retrieve those details and display on the HR Candidates Section
