@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     font-family: 'Urbanist', sans-serif;
@@ -12,6 +13,9 @@ header {
     padding: 20px;
     background-color: #fff;
     border-bottom: 1px solid #e0e0e0;
+    min-height: 20px;
+    /* Maintain minimum header height */
+    box-sizing: border-box;
 }
 
 header input {
@@ -19,25 +23,36 @@ header input {
     border-radius: 5px;
     border: 1px solid #ddd;
     width: 200px;
+    min-width: 120px;
+    /* Prevent input from getting too small */
+    box-sizing: border-box;
 }
 
 .dashboard-container {
     display: flex;
     min-height: 100vh;
+    position: relative;
 }
 
-/* Sidebar styles */
+/* Sidebar styles - Responsive */
 .sidebar {
     background-color: #fff;
     width: 220px;
+    min-width: 220px;
+    /* Prevent sidebar from shrinking too much */
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    flex-shrink: 0;
+    /* Prevent sidebar from shrinking */
 }
 
 .logo h2 {
     font-size: 24px;
     color: #333;
     margin: 0 0 40px 0;
+    white-space: nowrap;
+    /* Prevent logo text wrapping */
 }
 
 .nav-links {
@@ -46,11 +61,12 @@ header input {
     margin: 0;
 }
 
-.nav-links > li {
-    margin-bottom: 0; /* Remove default margins */
+.nav-links>li {
+    margin-bottom: 0;
 }
 
-.nav-links li a, .nav-links .nav-item {
+.nav-links li a,
+.nav-links .nav-item {
     text-decoration: none;
     color: #555;
     font-size: 16px;
@@ -59,18 +75,25 @@ header input {
     transition: background-color 0.3s;
     margin-bottom: 8px;
     border-radius: 8px;
+    white-space: nowrap;
+    /* Prevent nav items from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Show ellipsis if text is too long */
 }
 
-.nav-links li a.active, .nav-links .nav-item.active {
+.nav-links li a.active,
+.nav-links .nav-item.active {
     background-color: #e3efff;
     color: #007bff;
 }
 
-.nav-links li a:hover, .nav-links .nav-item:hover {
+.nav-links li a:hover,
+.nav-links .nav-item:hover {
     background-color: #ececec;
 }
 
-/* Dropdown styles - COMPLETELY REWRITTEN */
+/* Dropdown styles - Enhanced for responsiveness */
 .dropdown-container {
     margin-bottom: 8px;
 }
@@ -91,6 +114,10 @@ header input {
     font-size: 16px;
     text-align: left;
     position: relative;
+    white-space: nowrap;
+    /* Prevent button text wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dropbtn.active {
@@ -136,6 +163,10 @@ header input {
     transition: background-color 0.3s;
     margin-bottom: 4px;
     font-size: 15px;
+    white-space: nowrap;
+    /* Prevent dropdown items from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dropdown-content a:last-child {
@@ -151,7 +182,317 @@ header input {
     background-color: #ececec;
 }
 
+/* Main content - Responsive with proper centering */
 .main-content {
     flex: 1;
     padding: 20px;
+    max-width: calc(100vw - 260px);
+    /* Account for sidebar width */
+    box-sizing: border-box;
+    overflow-x: auto;
+    /* Handle horizontal overflow gracefully */
+}
+
+/* Center content wrapper for pages that need it */
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+
+/* Large screens (1440px and up) - Allow more padding and larger header */
+@media screen and (min-width: 1440px) {
+    header {
+        padding: 25px 30px;
+        min-height: 25px;
+    }
+
+    header input {
+        width: 250px;
+    }
+
+    .sidebar {
+        width: 240px;
+        min-width: 240px;
+        padding: 25px;
+    }
+
+    .logo h2 {
+        font-size: 26px;
+    }
+
+    .nav-links li a,
+    .nav-links .nav-item {
+        font-size: 16px;
+        padding: 14px 18px;
+    }
+
+    .main-content {
+        padding: 25px;
+        max-width: calc(100vw - 290px);
+    }
+
+    .content-wrapper {
+        max-width: 1400px;
+    }
+}
+
+/* Large tablets and small desktops (1024px and down) */
+@media screen and (max-width: 1024px) {
+    .main-content {
+        padding: 18px;
+        max-width: calc(100vw - 240px);
+    }
+
+    header input {
+        width: 180px;
+    }
+
+    .content-wrapper {
+        max-width: 100%;
+    }
+}
+
+/* Tablets (768px and down) - Maintain sidebar but adjust main content */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 15px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    header input {
+        width: 150px;
+        min-width: 100px;
+    }
+
+    .sidebar {
+        width: 200px;
+        min-width: 200px;
+        padding: 15px;
+    }
+
+    .logo h2 {
+        font-size: 22px;
+    }
+
+    .nav-links li a,
+    .nav-links .nav-item {
+        font-size: 15px;
+        padding: 10px 12px;
+    }
+
+    .dropbtn {
+        font-size: 15px;
+        padding: 10px 12px;
+    }
+
+    .dropdown-content a {
+        padding: 6px 25px;
+        font-size: 14px;
+    }
+
+    .main-content {
+        padding: 15px;
+        max-width: calc(100vw - 230px);
+    }
+}
+
+/* Mobile landscape and small tablets (640px and down) */
+@media screen and (max-width: 640px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: 100%;
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        order: 2;
+        /* Move sidebar below main content */
+    }
+
+    .logo h2 {
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .nav-links>li {
+        margin-bottom: 0;
+    }
+
+    .nav-links li a,
+    .nav-links .nav-item {
+        margin-bottom: 0;
+        padding: 8px 12px;
+        font-size: 14px;
+        border-radius: 6px;
+    }
+
+    .dropdown-container {
+        margin-bottom: 0;
+    }
+
+    .dropbtn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+        margin-top: 5px;
+    }
+
+    .dropdown-content a {
+        padding: 5px 15px;
+        font-size: 13px;
+        margin-bottom: 2px;
+    }
+
+    .main-content {
+        order: 1;
+        /* Move main content above sidebar */
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    header {
+        order: 0;
+        /* Keep header at top */
+        padding: 12px 15px;
+    }
+
+    header input {
+        width: 120px;
+    }
+}
+
+/* Mobile portrait (480px and down) */
+@media screen and (max-width: 480px) {
+    header {
+        padding: 10px 12px;
+        min-height: 15px;
+    }
+
+    header input {
+        width: 100px;
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .sidebar {
+        padding: 12px;
+    }
+
+    .logo h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .nav-links li a,
+    .nav-links .nav-item {
+        padding: 6px 10px;
+        font-size: 13px;
+        margin-bottom: 5px;
+    }
+
+    .dropbtn {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+
+    .dropdown-arrow {
+        right: 10px;
+        font-size: 11px;
+    }
+
+    .dropdown-content a {
+        padding: 4px 12px;
+        font-size: 12px;
+    }
+
+    .main-content {
+        padding: 12px;
+    }
+}
+
+/* Very small screens (320px and down) */
+@media screen and (max-width: 320px) {
+    header {
+        padding: 8px 10px;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    header input {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .sidebar {
+        padding: 10px;
+    }
+
+    .logo h2 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-links li a,
+    .nav-links .nav-item {
+        text-align: center;
+        padding: 8px;
+        font-size: 12px;
+        margin-bottom: 3px;
+    }
+
+    .dropbtn {
+        text-align: center;
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .dropdown-content a {
+        text-align: center;
+        padding: 6px;
+        font-size: 11px;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+}
+
+/* Ensure content doesn't break layout on any screen size */
+* {
+    box-sizing: border-box;
+}
+
+/* Prevent horizontal scrolling issues */
+html {
+    overflow-x: hidden;
+}
+
+/* Ensure main content area handles overflow properly */
+.main-content>* {
+    max-width: 100%;
+    overflow-wrap: break-word;
 }

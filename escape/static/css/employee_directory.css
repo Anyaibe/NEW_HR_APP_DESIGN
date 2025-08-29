@@ -652,7 +652,6 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     max-height: 90vh;
-    overflow-y: auto;
 }
 
 .Header-links {
@@ -990,6 +989,6 @@
     
     .addEmployeeModal {
         max-width: 1000px;
-        padding: 35px;
+        padding: 25px;
     }
 }
