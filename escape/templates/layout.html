@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}E-scape HR Application{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/all.min.js' %}" defer></script>
     <script src="{% static 'js/layout.js' %}" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     {% block extra_css %}{% endblock %}
@@ -13,7 +15,12 @@
 <body>
 <header>
         <h1>Hello, Welcome</h1>
-        <input type="search" placeholder="Search..." />
+        
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="search" placeholder="Search..." class="search-bar">
+        </div>
+        
     </header>
 
     <div class="dashboard-container">
@@ -25,6 +32,10 @@
                 <!-- Dashboard Link -->
                 <li>
                     <a href="{% url 'dashboard' %}" class="nav-item {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">Dashboard</a>
+                </li>
+
+                <li>
+                    <a href="#" class="nav-item">Remuneration</a>
                 </li>
 
                 <!-- Employees Dropdown -->
@@ -51,12 +62,23 @@
                     </div>
                 </div>
 
+                <div class="dropdown-container">
+                    <button class="dropbtn {% if request.resolver_match.url_name == 'work_management' or request.resolver_match.url_name == 'attendance_tracking' %}active{% endif %}" onclick="toggleDropdown('workPlaceDropdown')">
+                        Workplace
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="dropdown-content {% if request.resolver_match.url_name == 'work_management' or request.resolver_match.url_name == 'attendance_tracking' %}show{% endif %}" id="workPlaceDropdown">
+                        <a href="{% url 'work_management' %}" class="{% if request.resolver_match.url_name == 'work_management' %}active{% endif %}">Work Management</a>
+                        <a href="{% url 'attendance_tracking' %}" class="{% if request.resolver_match.url_name == 'attendance_tracking' %}active{% endif %}">Attendance Tracking</a>
+                    </div>
+                </div>
+
                 <!-- Other Navigation Items -->
                 <li>
                     <a href="#" class="nav-item">Hub</a>
                 </li>
                 <li>
-                    <a href="#" class="nav-item">Settings</a>
+                    <a href="#" class="nav-item"> Account Settings</a>
                 </li>
             </nav>
         </div>

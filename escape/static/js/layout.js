@@ -64,6 +64,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Handle Workplace dropdown
+const workPlaceDropdown = document.getElementById("workPlaceDropdown");
+if (workPlaceDropdown) {
+    const workPlaceDropdownLinks = workPlaceDropdown.querySelectorAll('a');
+    const workPlaceDropbtn = document.querySelector('[onclick*="workPlaceDropdown"]');
+    const workPlaceArrow = workPlaceDropbtn.querySelector('.dropdown-arrow');
+    
+    // Check if we're on a workplace-related page
+    let isOnWorkPlacePage = false;
+    workPlaceDropdownLinks.forEach(link => {
+        if (link.classList.contains('active')) {
+            isOnWorkPlacePage = true;
+        }
+    });
+    
+    // If we're on a workplace page, show dropdown, highlight parent, and rotate arrow
+    if (isOnWorkPlacePage && workPlaceDropbtn) {
+        workPlaceDropdown.classList.add('show');
+        workPlaceDropbtn.classList.add('active');
+        if (workPlaceArrow) workPlaceArrow.classList.add('rotated');
+    }
+}
+
+
     // Close other dropdowns when one is opened (optional feature)
     const allDropdownButtons = document.querySelectorAll('.dropbtn');
     allDropdownButtons.forEach(button => {
